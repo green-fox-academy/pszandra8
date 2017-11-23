@@ -1,0 +1,28 @@
+body {
+    margin: 12px 0 0 12px;
+    width: 500px;
+}
+
+p {
+    display: inline-block;
+    width: 137px;
+    height: 87px;
+    border: solid;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #0CEBDE;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    margin-right: 13px;
+    margin-bottom: 13px;
+    padding-top: 50px;
+}
+
+p:first-child{
+    background-color: #B90CEB;
+}
+
+p:last-child{
+    background-color: #EBBE0C;
