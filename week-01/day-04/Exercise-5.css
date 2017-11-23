@@ -1,0 +1,22 @@
+h1{
+    color: #FF6347;
+}
+
+h2, h3 {
+    color: #8A2BE2;
+}
+
+p {
+    padding-right: 60%;
+}
+
+ol {
+    color: #FF0EFF;
+    padding-left: 5%;
+    text-decoration: underline;
+}
+
+ol li:nth-child(4) {
+    color: black;
+    text-decoration: underline black; 
+}
