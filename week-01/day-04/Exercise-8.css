@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+article{
+    padding: 0 20px;
+    width: 646px;
+    height: 96px;
+    border: solid #4285f4 2px;
+    margin: 5px;
+}
+
+p {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 25px 5px;
+}
+
+article:nth-child(1) > p {
+    background-color: #4285f4;
+}
+
+article:nth-child(2) > p {
+    background-color: #643579;
+}
+
+article:nth-child(2) {
+    background-color: #ff6347;
+    margin-top: 12px;
+}
+
