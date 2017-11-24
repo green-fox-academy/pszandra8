@@ -4,23 +4,27 @@
       <title>Exercise-1</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="Exercise-1.css" media="screen" />
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
   </head>
   <body class="container">
       <form action="" method="get">
           <fieldset>
             <h1>Profil</h1>
             <section class="personal">
-              <p>Szemelyes adatok</p>
-              <label>Név <span class="required">*</span></label><br>
-              <input type="name" class ="wide" name"Nev" id="Nev">
-              <br>
-              <label>Születési éved</label><br>
-              <input type="Ev" name"Ev" id="Ev" placeholder="pl. 1984"><br>
-              <label>Nemed</label><br>
+              <p>Személyes adatok</p>
+                <label>Név <span class="required">*</span></label><br>
+                <input type="name" class ="wide" name"Nev" id="Nev">
+            <section class="year">
+                <label>Születési éved</label><br>
+                <input type="Ev" name"Ev" id="Ev" placeholder="pl. 1984">
+            </section>
+            <section class="sex"> 
+                <label>Nemed</label><br>
                 <input type="radio" name="sex" id="No">
                 <label for="No">Nő</label>
                 <input type="radio" name="sex" id="Ferfi">
-                <label for="Ferfi">Férfi</label><br>
+                <label for="Ferfi">Férfi</label>
+            </section>
                 <label>Milyen márkákat szeretsz?</label>
                 <section class="box1">
                     <input type="checkbox" name="marka" id="marka">
@@ -48,20 +52,22 @@
             </section><section class="connect">
                 <p>Kapcsolat</p>
                 <label>Telefonszám <span class="required">*</span></label><br>
-                <input type="tel" name"Telszam" class ="wide" id="Telszam" placeholder="+36 -- --- ----"><br>
+                <input type="tel" name"Telszam" class ="wide" id="Telszam" placeholder="+36 -- --- ----">
                 <label>E-mail cím <span class="required">*</span></label><br>
-                <input type="email" name"email" class ="wide" id="email" placeholder="nev@domain.hu"><br>
+                <input type="email" name"email" class ="wide" id="email" placeholder="nev@domain.hu">
                 <label>Facebook profilod</label><br>
-                <input type="text" name"Facebook" class ="wide" id="Facebook" placeholder="http://facebook.com/..."><br>
+                <input type="text" name"Facebook" class ="wide" id="Facebook" placeholder="http://facebook.com/...">
                 <label>Twitter profilod</label><br>
-                <input type="text" name"Nev" class ="wide" id="Nev" placeholder="http://twitter.com/..."><br>
-                <label class ="wide">Milyen házban laksz?</label><br>
-                <select>
-                    <option value=""></option>option>
+                <input type="text" name"Nev" class ="wide" id="Nev" placeholder="http://twitter.com/...">
+                <label>Milyen házban laksz?</label><br>
+                <select class="selector">
+                    <option value="" disabled selected>Válassz típust!</option>
+                    <option value="Ilyen">Ilyen</option>
+                    <option value="Olyan">Olyan</option>
                 </select>
             </section>
-            <label>Bemutatkozás <span class="required">*</span></label> <br>
-            <input type="Text" name"Bemutatkozas" id="Bemutatkozas" placeholder="Írj magadról pár mondatot!"><br>
+            <p class="intro">Bemutatkozás <span class="required">*</span></p>
+            <textarea placeholder="Írj magadról pár mondatot!"></textarea><br>
             <label>CV feltöltése</label> <br>
             <input type="checkbox: button" name"CV" id="CV">
           </fieldset>

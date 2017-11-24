@@ -2,16 +2,23 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
+}
+
 h1{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
     margin-top: 15px;
-    width: 623px;
+    width: 603px;
     height: 45px;
     background-color: #dcd6cd;
     color: #4a4261;
+    padding: 15px;
     font-weight: lighter;
+    font-size: 18px;
 
 }
 
@@ -25,29 +32,90 @@ h1{
 }
 .personal {
     vertical-align: top;
-    margin-right: 13px;
+    margin-right: 0px;
     margin-bottom: 15px;
     padding: 15px;
-    width: 296.5px;
+    width: 301px;
     height: 406px;
     display: inline-block;
     background-color: #dcd6cd;
-    font-weight: bold;
 }
 
 .connect {
-    margin-left: 13px;
+    margin-left: 0px;
     vertical-align: top;
     padding: 15px;
-    width: 296.5px;
+    width: 301px;
     margin-bottom: 15px;
     height: 406px;
     display: inline-block;
     background-color: #dcd6cd; 
-    font-weight: bold;
+}
+
+.year {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 118px;
+    display: inline-block;
+}
+
+.sex {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 118px;
+    display: inline-block;
 }
 
 .wide {
-    display: block;
+    display: inline-block;
     width: 100%;
+    height: 31px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 170px;
+    width: 100%;
+    border-radius: 1px;
+    border-color: #a7a2aa;
+}
+
+.required {
+    color: red;
+}
+
+.intro {
+    margin: 0;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+.container p:nth-child(1) {
+    padding: 8px;
+    background-color: #938c97;
+    color: white;
+    margin-top: 0;
+    font-weight: lighter;
+}
+
+p:nth-of-type(2){
+    color: #c4bfb8;
+    font-weight: lighter;
+}
+
+.box1, .box2 {
+    font-weight: lighter;
+}
+
+.selector {
+    width: 100%;
+    height: 32px;
+    color: #d6d6d6;
+}
+
+#Ev {
+    width: 80px;
+    height: 32px;
 }
