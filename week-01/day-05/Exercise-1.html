@@ -12,32 +12,58 @@
             <section class="personal">
               <p>Szemelyes adatok</p>
               <label>Név <span class="required">*</span></label><br>
-              <input type="Nev" name"Nev" id="Nev">
+              <input type="name" class ="wide" name"Nev" id="Nev">
               <br>
               <label>Születési éved</label><br>
-              <input type="Ev" name"Ev" id="Ev"><br>
+              <input type="Ev" name"Ev" id="Ev" placeholder="pl. 1984"><br>
               <label>Nemed</label><br>
                 <input type="radio" name="sex" id="No">
                 <label for="No">Nő</label>
                 <input type="radio" name="sex" id="Ferfi">
                 <label for="Ferfi">Férfi</label><br>
                 <label>Milyen márkákat szeretsz?</label>
+                <section class="box1">
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Adidas</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Apple</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Coca-Cola</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Mazda</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Nike</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Opel</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Ray-Ban</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Starbucks</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Tesla</label>
+                    <input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Yahoo</label>
+            </section>
               <p>Többet is választhatsz!</p>
             </section><section class="connect">
                 <p>Kapcsolat</p>
-                <label>Telefonszam <span class="required">*</span></label><br>
-                <input type="Telszam" name"Telszam" id="Telszam"><br>
-                <label>E-mail cim <span class="required">*</span></label><br>
-                <input type="email" name"email" id="email"><br>
+                <label>Telefonszám <span class="required">*</span></label><br>
+                <input type="tel" name"Telszam" class ="wide" id="Telszam" placeholder="+36 -- --- ----"><br>
+                <label>E-mail cím <span class="required">*</span></label><br>
+                <input type="email" name"email" class ="wide" id="email" placeholder="nev@domain.hu"><br>
                 <label>Facebook profilod</label><br>
-                <input type="Facebook" name"Facebook" id="Facebook"><br>
+                <input type="text" name"Facebook" class ="wide" id="Facebook" placeholder="http://facebook.com/..."><br>
                 <label>Twitter profilod</label><br>
-                <input type="Nev" name"Nev" id="Nev"><br>
-                <label>Milyen hazban laksz?</label><br>
-                <input type="haz" name"haz" id="haz">
+                <input type="text" name"Nev" class ="wide" id="Nev" placeholder="http://twitter.com/..."><br>
+                <label class ="wide">Milyen házban laksz?</label><br>
+                <select>
+                    <option value=""></option>option>
+                </select>
             </section>
             <label>Bemutatkozás <span class="required">*</span></label> <br>
-            <input type="Bemutatkozas" name"Bemutatkozas" id="about">
+            <input type="Text" name"Bemutatkozas" id="Bemutatkozas" placeholder="Írj magadról pár mondatot!"><br>
+            <label>CV feltöltése</label> <br>
+            <input type="checkbox: button" name"CV" id="CV">
           </fieldset>
       </form>
   </body>
