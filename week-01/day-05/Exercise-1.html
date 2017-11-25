@@ -25,29 +25,29 @@
                 <input type="radio" name="sex" id="Ferfi">
                 <label for="Ferfi">Férfi</label>
             </section>
-                <label>Milyen márkákat szeretsz?</label>
-                <section class="box1">
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Adidas</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Apple</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Coca-Cola</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Mazda</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Nike</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Opel</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Ray-Ban</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Starbucks</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Tesla</label>
-                    <input type="checkbox" name="marka" id="marka">
-                    <label for="marka">Yahoo</label>
-            </section>
+                <label class="brand">Milyen márkákat szeretsz?</label>
+                <ul class="box1">
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Adidas</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Apple</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Coca-Cola</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Mazda</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Nike</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Opel</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Ray-Ban</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Starbucks</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Tesla</label></li>
+                    <li><input type="checkbox" name="marka" id="marka">
+                    <label for="marka">Yahoo</label></li>
+                </ul>
               <p>Többet is választhatsz!</p>
             </section><section class="connect">
                 <p>Kapcsolat</p>
@@ -69,8 +69,12 @@
             <p class="intro">Bemutatkozás <span class="required">*</span></p>
             <textarea placeholder="Írj magadról pár mondatot!"></textarea><br>
             <label>CV feltöltése</label> <br>
-            <input type="checkbox: button" name"CV" id="CV">
-          </fieldset>
+            <button type="button">File kiválasztása</button><br>
+            <input type="checkbox" name="accept" id="accept">
+            <label for="accept">Elfogadom a <a href="#">felhasználási feltételeket</a></label><br>
+            <button type="button">Mentés</button>
+            <button type="button">Űrlap törlése</button>
+        </fieldset>
       </form>
   </body>
 </html>
