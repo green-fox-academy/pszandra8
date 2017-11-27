@@ -1,0 +1,1 @@
+print("Alexa\n26\n1.66")
