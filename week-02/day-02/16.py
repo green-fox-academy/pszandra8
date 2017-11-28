@@ -1,6 +1,5 @@
 nimals = ["kuty", "macsk", "cic"]
-n = len(nimals)
-for i in range(n):
+for i in range(len(nimals)):
     nimals[i] += "a"
 
 print(nimals)
