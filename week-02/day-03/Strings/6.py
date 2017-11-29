@@ -1,8 +1,3 @@
-
-# Things are a little bit messed up
-# Your job is to decode the not_so_cryptic_message by using the hashmap as a look up table
-# Assemble the fragments into the out variable
-
 out = ""
 not_so_cryptic_message = [1, 12, 1, 2, 11, 1, 7, 11, 1, 49, 1, 3, 11, 1, 50, 11]
 
@@ -18,8 +13,6 @@ hashmap = {
 }
 
 for i in not_so_cryptic_message:
-    if i == 1:
-        for n in hashmap:
-            out.append("Never gonna")
+    out += hashmap[i] + "\n"
 
 print(out)
