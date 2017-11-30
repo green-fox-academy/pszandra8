@@ -1,4 +1,3 @@
-
 accounts = [
 	{ 'client_name': 'Igor', 'account_number': 11234543, 'balance': 203004099.2 },
 	{ 'client_name': 'Vladimir', 'account_number': 43546731, 'balance': 5204100071.23 },

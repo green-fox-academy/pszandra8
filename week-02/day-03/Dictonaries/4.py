@@ -8,10 +8,13 @@ queue = [
 	{ 'name': 'Joerg', 'alcohol': 20, 'guns': 0 }
 ]
 
+watchlist = []
+security_alcohol_loot = 0
+
 def security_check():
-    watchlist = []
+    global watchlist
+    global security_alcohol_loot
     goers = str()
-    security_alcohol_loot = 0
     for n in range(len(queue)):
         if queue[n]["guns"] == 0 and queue[n]["alcohol"] == 0:
             goers += queue[n]["name"]
