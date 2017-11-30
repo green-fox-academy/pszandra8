@@ -1,18 +1,22 @@
-# Create a simple calculator application which does read the parameters from the prompt 
-# and prints the result to the prompt. 
+def calculator(number):
+    def add(x, y):
+        return x + y
+    def subtract(x, y):
+        return x - y
+    def multiply(x, y):
+        return x * y
+    def divide(x, y):
+        return x / y
+    for i in range(len(number)):
+        x = int(number[0])
+        y = int(number[4])
+        if number[i] == "+":
+            print(add(x, y))
+        elif number[i] == "-":
+            print(subtract(x, y))
+        elif number[i] == "*":
+            print(multiply(x, y))
+        elif number[i] == "/":
+            print(divide(x, y))
 
-# It should support the following operations: 
-# +, -, *, /, % and it should support two operands. 
-
-# The format of the expressions must be: {operation} {operand} {operand}. 
-# Examples: "+ 3 3" (the result will be 6) or "* 4 4" (the result will be 16)
-
-# You should use the input() function to accept user input
-# It should work like this:
-
-# Start the program
-# It prints: "Please type in the expression:"
-# Waits for the user input
-# Print the result
-# Exit
-
+calculator(input("Please type in the expression: "))
