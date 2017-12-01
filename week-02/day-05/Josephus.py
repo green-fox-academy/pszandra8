@@ -1,8 +1,8 @@
 number = int(input("Please type in a number: "))
-list_of_number = []
-new_list = []
 
 def josephus(number):
+    list_of_number = []
+    new_list = []
     if number = 1:
         print("Winning seat is: 1")
     for i in range(1, number):
