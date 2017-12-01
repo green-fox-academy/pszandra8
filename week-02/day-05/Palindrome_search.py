@@ -1,8 +1,7 @@
 or_text = input("Please enter a string: ")
-text = []
 
 def search_palindrome(or_text):
-    global text
+    text = []
     for t in or_text:
         text.append(t)
     for i in range(len(text)):
