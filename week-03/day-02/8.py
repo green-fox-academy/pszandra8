@@ -11,4 +11,4 @@ def decrypt(file_name):
     except IOError:
         return "Unable to write file."
 
-print(decrypt("reversed-lines.txt"))
+decrypt("reversed-lines.txt")
