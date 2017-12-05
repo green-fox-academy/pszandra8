@@ -1,8 +1,11 @@
-# Create a method that decrypts the duplicated-chars.txt
-
 def decrypt(file_name):
-    o_file = open(file_name, "w")
-    text = o_file.read()
-    return text
+    try:
+        o_file = open(file_name, "r")
+        new_file = open("decrypted.txt", "w")
+        text = o_file.read()
+        new_text = text[::2]
+        new_file.write(new_text)
+    except IOError:
+        return "Unable to write file."
 
 print(decrypt("duplicated-chars.txt"))
