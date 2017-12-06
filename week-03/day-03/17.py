@@ -25,13 +25,13 @@ def drawing3(x, y):
 
 def drawing4(x, y):
     for i in range(15):
-        x += 10
-        y -= 10
-        canvas.create_line(x, 150 + y, 150 + x, y, fill = "green")
+        x -= 10
+        y += 10
+        canvas.create_line(150, 150 + y, x, 150, fill = "green")
 
 drawing(150, 0)
 drawing2(0, 0)
 drawing3(0, 0)
-drawing4(150, 300)
+drawing4(300, 0)
 
 root.mainloop()
