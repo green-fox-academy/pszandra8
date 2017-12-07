@@ -3,4 +3,11 @@ def count(n):
         count(n - 1)
     print(n)
 
-count(6)
+count(9)
+
+def countdown(number):
+    if number == 0:
+        return 0
+    else:
+        countdown(number - 1)
+    print(number)
