@@ -22,11 +22,10 @@ class Dice(object):
         else:
             self.roll()
 
-
-dice = Dice()
-print(dice.get_current())
-dice.roll()
-print(dice.get_current())
-dice.reroll(3)
-print(dice.get_current(3))
-print(dice.get_current())
+#dice = Dice()
+#print(dice.get_current())
+#dice.roll()
+#print(dice.get_current())
+#dice.reroll(3)
+#print(dice.get_current(3))
+#print(dice.get_current())

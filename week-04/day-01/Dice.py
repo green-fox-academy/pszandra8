@@ -1,5 +1,13 @@
-You have a Dice class which has 6 dice
-You can roll all of them with roll()
-Check the current rolled numbers with get_current()
-You can reroll with reroll()
-Your task is to get where all dice is a 6
+from dice2 import Dice
+
+def all_is_six():
+    dice = Dice()
+    print(dice.get_current())
+    dice.roll()
+    print(dice.get_current())
+    for i in range(6):
+        while dice.get_current(i) != 6:
+            dice.reroll(i)
+    print(dice.get_current())
+
+all_is_six()
