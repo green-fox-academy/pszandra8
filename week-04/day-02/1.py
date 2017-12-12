@@ -70,20 +70,20 @@ class PallidaClass(object):
 
 people = []
 
-mark = Person('Mark', 46, 'male')
+mark = Person("Mark", 46, "male")
 people.append(mark)
 jane = Person("Jane Doe", 30, "female")
 people.append(jane)
-john = Student('John Doe', 20, 'male', 'BME')
+john = Student("John Doe", 20, "male", "BME")
 people.append(john)
 student = Student("Jane Doe", 30, "female", "The School of Life")
 people.append(student)
-gandhi = Mentor('Gandhi', 148, 'male', 'senior')
+gandhi = Mentor("Gandhi", 148, "male", "senior")
 people.append(gandhi)
 mentor = Mentor("Jane Doe", 30, "female", "intermediate")
 people.append(mentor)
 sponsor = Sponsor("Jane Doe", 30, "female", "Google")
-elon = Sponsor('Elon Musk', 46, 'male', 'SpaceX')
+elon = Sponsor("Elon Musk", 46, "male", "SpaceX")
 people.append(elon)
 student.skip_days(3)
 
@@ -97,7 +97,7 @@ for member in people:
     member.introduce()
     member.get_goal()
 
-badass = PallidaClass('BADA55')
+badass = PallidaClass("BADA55")
 badass.add_student(student)
 badass.add_student(john)
 badass.add_mentor(mentor)
