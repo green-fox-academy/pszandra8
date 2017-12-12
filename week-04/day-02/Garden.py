@@ -1,31 +1,30 @@
 class Plant(object):
 
-    def __init__(self, plant, color, collect = []):
-        self.plant = plant
-        self.color = color
+    def __init__(self, collect = []):
         self.collect = collect
 
-    def add_plant(self):
-        self.collect.append(self.plant)
+    def add_plant(self, plant):
+        self.collect.append(plant)
 
     def watering(self, water):
         print("Watering with " + str(water))
         count = 0
-        for i in range(len(self.collect)):
-            if self.collect[i] == "flower" and self.water_level <= 5:
+        for i in self.collect:
+            if i.plant == "flower" and i.water_level <= 5:
                count += 1
-            elif self.collect[i] == "tree" and self.water_level <= 10:
+            elif i.plant == "tree" and i.water_level <= 10:
                 count += 1
             water /= count
-            for n in range(len(self.collect)):
-                if self.collect[n] == "flower" and self.water_level <= 5:
-                    self.water_level += 0.75 * water
-                elif self.collect[n] == "tree" and self.water_level <= 10:
-                    self.water_level += 0.4 * water
+        for n in self.collect:
+            if n.plant == "flower" and n.water_level <= 5:
+                n.water_level += 0.75 * water
+            elif n.plant == "tree" and n.water_level <= 10:
+                n.water_level += 0.4 * water
 
-class Flowers(Plant):
+class Flowers():
     def __init__(self, plant, color, water_level):
-        super().__init__(plant, color)
+        self.plant = plant
+        self.color = color
         self.water_level = water_level
 
     def cal_need(self):
@@ -34,9 +33,10 @@ class Flowers(Plant):
         else:
             print("The " + self.color + " " + self.plant + " doesn't need water")
 
-class Trees(Plant):
+class Trees():
     def __init__(self, plant, color, water_level):
-        super().__init__(plant, color)
+        self.plant = plant
+        self.color = color
         self.water_level = water_level
 
     def cal_need(self):
@@ -45,26 +45,31 @@ class Trees(Plant):
         else:
             print("The " + self.color + " " + self.plant + " doesn't need water")
 
+garden = Plant()
+
 flower_1 = Flowers("flower", "yellow", 0)
 flower_2 = Flowers("flower", "blue", 0)
-
 tree_1 = Trees("tree", "purple", 0)
 tree_2 = Trees("tree", "orange", 0)
 
-flower_1.add_plant()
-flower_2.add_plant()
-tree_1.add_plant()
-tree_2.add_plant()
+garden.add_plant(flower_1)
+garden.add_plant(flower_2)
+garden.add_plant(tree_1)
+garden.add_plant(tree_2)
 
 flower_1.cal_need()
 flower_2.cal_need()
 tree_1.cal_need()
 tree_2.cal_need()
 
-flower_1.watering(40)
-flower_2.watering(40)
-tree_1.watering(40)
-tree_2.watering(40)
+garden.watering(40)
+
+flower_1.cal_need()
+flower_2.cal_need()
+tree_1.cal_need()
+tree_2.cal_need()
+
+garden.watering(70)
 
 flower_1.cal_need()
 flower_2.cal_need()
