@@ -1,5 +1,6 @@
-def summa(numbers):
-    sum_of_all_numbers = 0
-    for number in numbers:
-        sum_of_all_numbers += number
-    return sum_of_all_numbers
+class Summa(object):
+    def summa(self, numbers = []):
+        number_count = 0
+        for number in numbers:
+            number_count += number
+        return number_count
