@@ -1,4 +1,4 @@
-class Plant(object):
+class Garden(object):
 
     def __init__(self, collect = []):
         self.collect = collect
@@ -21,7 +21,7 @@ class Plant(object):
             if i.plant_type == "tree" and i.water_level <= 10:
                 i.water_level += water * 0.4
         
-class Flowers():
+class Flower():
     def __init__(self, color, water_level, plant_type = "flower"):
         self.color = color
         self.water_level = water_level
@@ -33,7 +33,7 @@ class Flowers():
         else:
             print("The " + self.color + " " + self.plant_type + " doesn't need water")
 
-class Trees():
+class Tree():
     def __init__(self, color, water_level, plant_type = "tree"):
         self.color = color
         self.water_level = water_level
@@ -45,12 +45,12 @@ class Trees():
         else:
             print("The " + self.color + " " + self.plant_type + " doesn't need water")
 
-flower_1 = Flowers("yellow", 0)
-flower_2 = Flowers("blue", 0)
-tree_1 = Trees("purple", 0)
-tree_2 = Trees("orange", 0)
+flower_1 = Flower("yellow", 0)
+flower_2 = Flower("blue", 0)
+tree_1 = Tree("purple", 0)
+tree_2 = Tree("orange", 0)
 
-garden = Plant()
+garden = Garden()
 
 garden.add_plant(flower_1)
 garden.add_plant(flower_2)
