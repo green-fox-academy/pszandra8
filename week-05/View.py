@@ -1,6 +1,4 @@
 from tkinter import *
-from Controller import *
-from Model import *
 
 class Map(object):
 
@@ -23,6 +21,7 @@ class Map(object):
         canvas.pack()
         floor = PhotoImage(file = "floor.gif")
         wall = PhotoImage(file = "wall.gif")
+        down = PhotoImage(file = "hero-down.gif")
         for i in range(len(self.area)):
             for j in range(len(self.area[i])):
                 y = j * 72
@@ -31,6 +30,8 @@ class Map(object):
                     image = canvas.create_image(x, y, anchor = NW, image = floor)
                 else:
                     image = canvas.create_image(x, y, anchor = NW, image = wall)
+
+        image = canvas.create_image(0, 0, anchor = NW, image = down)
 
         root.mainloop()
 
