@@ -1,1 +1,2 @@
-import Tile from Model
+from Model import Tile
+from View import Draw
