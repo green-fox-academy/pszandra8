@@ -1,23 +1,38 @@
 from tkinter import *
+from Controller import *
+from Model import *
 
-root = Tk()
-canvas = Canvas(root, width = "720", height = "720")
-canvas.pack()
+class Map(object):
 
-class Draw(object):
     def __init__(self):
-        pass
+        self.area = [
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+        [0, 1, 1, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0, 1, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 1, 0, 1, 0]]
 
-    def draw_tile(self, img):
-        x = 0
-        y = 0
-        for i in range(11):
-            for i in range(11):
-                image = canvas.create_image(x, y, anchor = NE, image = img)
-                x += 72
-            y += 72
-            x = 0
+    def drawer(self):
+        root = Tk()
+        canvas = Canvas(root, width = "720", height = "720")
+        canvas.pack()
+        floor = PhotoImage(file = "floor.gif")
+        wall = PhotoImage(file = "wall.gif")
+        for i in range(len(self.area)):
+            for j in range(len(self.area[i])):
+                y = j * 72
+                x = i * 72
+                if self.area[j][i] == 0:
+                    image = canvas.create_image(x, y, anchor = NW, image = floor)
+                else:
+                    image = canvas.create_image(x, y, anchor = NW, image = wall)
 
-draw = Draw()
-draw.draw_tile(floor)
-root.mainloop()
+        root.mainloop()
+
+map = Map()
+map.drawer()
