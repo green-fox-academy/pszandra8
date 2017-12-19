@@ -21,4 +21,4 @@ class Character(object):
 
 class Hero(Character):
     def __init__(self, x = 0, y = 0, image):
-        uper().__init__(self, image, x, y, image)
+        super().__init__(self, image, x, y, image)
