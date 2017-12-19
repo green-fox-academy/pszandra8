@@ -13,14 +13,12 @@ class Wall(Tile):
     def __init__(self, x, y, access, image):
         super().__init__(self, image, x, y, False, wall = PhotoImage(file = "wall.gif"))
 
-class Hero():
-    def __init__(self, x = 0, y = 0, down = PhotoImage(file = "hero-down.gif")):
+class Character(object):
+    def __init__(self, x, y, image):
         self.x = x
         self.y = y
-        self.down = down
+        self.image = image
 
-class Hero(object):
-    def __init__(self, x = 0, y = 0, down = PhotoImage(file = "hero-down.gif")):
-        self.x = x
-        self.y = y
-        self.down = down
+class Hero(Character):
+    def __init__(self, x = 0, y = 0, image):
+        uper().__init__(self, image, x, y, image)
