@@ -10,7 +10,7 @@ class Floor(Tile):
         super().__init__(self, image, x, y, True, floor = PhotoImage(file = "floor.gif"))
 
 class Wall(Tile):
-    def __init__(self, x, y, access, image):
+    def __init__(self):
         super().__init__(self, image, x, y, False, wall = PhotoImage(file = "wall.gif"))
 
 class Character(object):
@@ -20,5 +20,5 @@ class Character(object):
         self.image = image
 
 class Hero(Character):
-    def __init__(self, x = 0, y = 0, image):
-        super().__init__(self, image, x, y, image)
+    def __init__(self):
+        super().__init__(self, image, 0, 0, image)
