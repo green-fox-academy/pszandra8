@@ -68,10 +68,10 @@ class Skeleton(object):
             elif self.sy <= 640 and map.area[(self.sy + 72) // 72][self.sx // 72] == 0:
                 self.sy += 72
                 self.draw_skeleton()
-            elif self.sy >= 72 and map.area[self.sy // 72][(self.sx + 72) // 72] == 0:
+            elif self.sy >= 72 and map.area[self.sy // 72][(self.sx - 72) // 72] == 0:
                 self.sx -= 72
                 self.draw_skeleton()
-            elif self.sy <= 640 and map.area[self.sy // 72][(self.sx - 72) // 72] == 0:
+            elif self.sy <= 640 and map.area[self.sy // 72][(self.sx + 72) // 72] == 0:
                 self.sx += 72
                 self.draw_skeleton()
         else:
@@ -105,13 +105,13 @@ class Boss(object):
             if self.by >= 72 and map.area[(self.by - 72) // 72][self.bx // 72] == 0:
                 self.by -= 72
                 self.draw_boss()
-            elif self.by <= 640 and map.area[(self.by + 72) // 72][self.bx // 72] == 0:
+            elif self.by <= 630 and map.area[(self.by + 72) // 72][self.bx // 72] == 0:
                 self.by += 72
                 self.draw_boss()
-            elif self.by >= 72 and map.area[self.by // 72][(self.bx + 72) // 72] == 0:
+            elif self.by >= 72 and map.area[self.by // 72][(self.bx - 72) // 72] == 0:
                 self.bx -= 72
                 self.draw_boss()
-            elif self.by <= 640 and map.area[self.by // 72][(self.bx - 72) // 72] == 0:
+            elif self.by <= 640 and map.area[self.by // 72][(self.bx + 72) // 72] == 0:
                 self.bx += 72
                 self.draw_boss()
         else:
@@ -165,7 +165,7 @@ skeleton2.skeleton_mover()
 skeleton3.skeleton_mover()
 
 boss = Boss(canvas)
-boss.draw_boss()
+boss.boss_mover()
 
 class Game(object):
     def __init__(self):
@@ -180,7 +180,7 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.hy -= 72
                 hero.move_up()
             else:
@@ -188,7 +188,7 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.move_up()
 
         elif e.keysym == "Down":
@@ -198,12 +198,12 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.hy += 72
                 hero.move_down()  
             else:
                 map.drawer()
-                boss.draw_boss()
+                boss.boss_mover()
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
@@ -215,7 +215,7 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.hx -= 72
                 hero.move_left()
             else:
@@ -223,7 +223,7 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.move_left()
 
         elif e.keysym == "Right":
@@ -233,7 +233,7 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.hx += 72
                 hero.move_right()
             else:
@@ -241,8 +241,12 @@ class Game(object):
                 skeleton1.skeleton_mover()
                 skeleton2.skeleton_mover()
                 skeleton3.skeleton_mover()
-                boss.draw_boss()
+                boss.boss_mover()
                 hero.move_right()
+
+        elif e.keysym == "Escape":
+            canvas.create_rectangle(0, 0, 720, 760, fill = "white")
+            canvas.create_text(355, 380, font = "Comic 50 italic", text = "Come again, bye")
 
 class Status(object):
     def __init__(self):
@@ -256,7 +260,7 @@ class Battle(object):
         pass
 
     def strike(self, e):
-        if e.keycode == 32:
+        if e.keysym == "space":
             if hero.hy == skeleton1.sy and hero.hx == skeleton1.sx:
                 skeleton1.HP -= 1
                 hero.HP_current -= 1
@@ -277,5 +281,8 @@ canvas.bind("<KeyPress>", battle.strike)
 canvas.bind("<KeyPress>", game.move)
 canvas.pack()
 canvas.focus_set()
+canvas.pack()
+canvas.focus_set()
+canvas.pack()
 canvas.focus_set()
 root.mainloop()
