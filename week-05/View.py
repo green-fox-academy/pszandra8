@@ -42,22 +42,18 @@ class Skeleton(object):
         self.position = [0, 72, 144, 216, 288, 360, 432, 504, 576, 648]
         self.sx = random.choice(self.position)
         self.sy = random.choice(self.position)
-        self.zx = random.choice(self.position)
-        self.zy = random.choice(self.position)
-        self.vx = random.choice(self.position)
-        self.vy = random.choice(self.position)
         self.HP = (2 * 3 * self.d6) + self.d6
         self.DP = 3 / 2 * self.d6 + (self.d6 / 2)
         self.SP = (3 * self.d6) + 3
         self.skeleton_img = PhotoImage(file = "skeleton.gif")
        
     def drop_skeleton(self):
-        #if map.area[self.sy // 72][self.sx // 72] == 0:
-        self.canvas.create_image(self.sx, self.sy, anchor = NW, image = self.skeleton_img)
-        self.canvas.create_image(self.zx, self.zy, anchor = NW, image = self.skeleton_img)
-        self.canvas.create_image(self.vx, self.vy, anchor = NW, image = self.skeleton_img)
-        #else:
-            #self.drop_skeleton()
+        if map.area[self.sy // 72][self.sx // 72] == 0 and self.sx != 0 and self.sy != 0:
+            self.canvas.create_image(self.sx, self.sy, anchor = NW, image = self.skeleton_img)
+        else:
+            self.sx = random.choice(self.position)
+            self.sy = random.choice(self.position)
+            self.drop_skeleton()
 
 class Boss(object):
     def __init__(self, canvas):
@@ -72,10 +68,12 @@ class Boss(object):
         self.SP = 3 * self.d6
 
     def drop_boss(self):
-        #if map.area[self.by // 72][self.bx // 72] == 0:
-        self.canvas.create_image(self.bx, self.by, anchor = NW, image = self.boss_img)
-        #else:
-            #self.drop_boss()
+        if map.area[self.by // 72][self.bx // 72] == 0 and self.by != 0 and self.bx != 0:
+            self.canvas.create_image(self.bx, self.by, anchor = NW, image = self.boss_img)
+        else:
+            self.bx = random.choice(self.position)
+            self.by = random.choice(self.position)
+            self.drop_boss()
 
 class Hero(object):
     def __init__(self, canvas):
@@ -115,8 +113,12 @@ hero = Hero(canvas)
 hero.move_down()
 
 skeleton = Skeleton(canvas)
-skeleton.drop_skeleton()
 
+def three_times():
+    for i in range(3):
+        skeleton.drop_skeleton()
+
+three_times()
 boss = Boss(canvas)
 boss.drop_boss()
 
@@ -128,51 +130,51 @@ class Game(object):
         if e.keysym == "Up":
             if hero.hy >= 72 and map.area[(hero.hy - 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.hy -= 72
                 hero.move_up()
             else:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.move_up()
 
         elif e.keysym == "Down":
             if hero.hy <= 640 and map.area[(hero.hy + 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.hy += 72
                 hero.move_down()  
             else:
                 map.drawer()
                 boss.drop_boss()
-                skeleton.drop_skeleton()
+                three_times()
                 hero.move_down()
         elif e.keysym == "Left":
             if hero.hx >= 72 and map.area[hero.hy // 72][(hero.hx - 72) // 72] == 0:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.hx -= 72
                 hero.move_left()
             else:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.move_left()
 
         elif e.keysym == "Right":
             if hero.hx <= 640 and map.area[hero.hy // 72][(hero.hx + 72) // 72] == 0:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.hx += 72
                 hero.move_right()
             else:
                 map.drawer()
-                skeleton.drop_skeleton()
+                three_times()
                 boss.drop_boss()
                 hero.move_right()
 
