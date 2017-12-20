@@ -99,7 +99,7 @@ class Game(object):
 
     def move(self, e):
         if e.keysym == "Up":
-            if hero.hy >= 72 and self.area[(self.x - 72) // 72][self.y // 72] == 0:
+            if hero.hy >= 72 and map.area[(hero.hy - 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
                 skeleton.drop_skeleton()
                 boss.drop_boss()
@@ -112,7 +112,7 @@ class Game(object):
                 hero.move_up()
 
         elif e.keysym == "Down":
-            if hero.hy <= 640:
+            if hero.hy <= 640 and map.area[(hero.hy + 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
                 skeleton.drop_skeleton()
                 boss.drop_boss()
@@ -124,7 +124,7 @@ class Game(object):
                 skeleton.drop_skeleton()
                 hero.move_down()
         elif e.keysym == "Left":
-            if hero.hx >= 72:
+            if hero.hx >= 72 and map.area[hero.hy // 72][(hero.hx - 72) // 72] == 0:
                 map.drawer()
                 skeleton.drop_skeleton()
                 boss.drop_boss()
@@ -137,7 +137,7 @@ class Game(object):
                 hero.move_left()
 
         elif e.keysym == "Right":
-            if hero.hx <= 640:
+            if hero.hx <= 640 and map.area[hero.hy // 72][(hero.hx + 72) // 72] == 0:
                 map.drawer()
                 skeleton.drop_skeleton()
                 boss.drop_boss()
