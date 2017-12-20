@@ -42,9 +42,9 @@ class Skeleton(object):
         self.position = [0, 72, 144, 216, 288, 360, 432, 504, 576, 648]
         self.sx = random.choice(self.position)
         self.sy = random.choice(self.position)
-        self.HP = (2 * 3 * self.d6) + self.d6
-        self.DP = 3 / 2 * self.d6 + (self.d6 / 2)
-        self.SP = (3 * self.d6) + 3
+        self.HP = 2 * self.d6 + self.d6
+        self.DP = 3 // 2 * self.d6
+        self.SP = self.d6
         self.skeleton_img = PhotoImage(file = "skeleton.gif")
        
     def drop_skeleton(self):
@@ -64,7 +64,7 @@ class Boss(object):
         self.by = random.choice(self.position)
         self.boss_img = PhotoImage(file = "boss.gif")
         self.HP = (2 * 3 * self.d6) + self.d6
-        self.DP = 3 / 2 * self.d6 + (self.d6 / 2)
+        self.DP = 3 // 2 * self.d6 + (self.d6 // 2)
         self.SP = 3 * self.d6
 
     def drop_boss(self):
@@ -87,6 +87,7 @@ class Hero(object):
         self.left = PhotoImage(file = "hero-left.gif")
         self.level = 1
         self.HP = 20 + 3 * self.d6
+        self.HP_current = 20 + 3 * self.d6
         self.DP = 2 * self.d6
         self.SP = 5 + self.d6
 
@@ -103,6 +104,7 @@ class Hero(object):
         canvas.create_image(self.hx, self.hy, anchor = NW, image = self.down)
 
     def level_up(self):
+        self.level += 1
         self.hp += randint(1, 6)
         self.dp += randint(1, 6)
         self.sp += randint(1, 6)
@@ -198,12 +200,36 @@ class Game(object):
 class Status(object):
     def __init__(self):
         canvas.create_text(210, 740, text = "Hero (Level " + str(hero.level) + ")")
-        canvas.create_text(315, 740, text = "Hero HP " + str(hero.HP))
+        canvas.create_text(315, 740, text = "Hero HP " + str(hero.HP) + "/" + str(hero.HP_current))
         canvas.create_text(415, 740, text = "Hero DP " + str(hero.DP))
         canvas.create_text(515, 740, text = "Hero SP " + str(hero.SP))
 
+class Battle(object):
+    def __init__(self):
+        pass
+
+    def strike(self, e):
+        if hero.hy == skeleton1.sy and hero.hx == skeleton1.sx:
+            if e.keysym == "Space":
+                skeleton1.HP -= 1
+                hero.HP_current -= 1
+        elif hero.hy == skeleton2.sy and hero.hx == skeleton2.sx:
+            if e.keysym == "Space":
+                skeleton2.HP -= 1
+                hero.HP_current -= 1
+        elif hero.hy == skeleton2.sy and hero.hx == skeleton2.sx:
+            if e.keysym == "Space":
+                skeleton3.HP -= 1
+                hero.HP_current -= 1
+        elif hero.hy == boss.by and hero.hx == boss.bx:
+            if e.keysym == "Space":
+                boss.HP -= 1
+                hero.HP_current -= 1
+
 status = Status()
 game = Game()
+battle = Battle()
+canvas.bind("<KeyPress>", battle.strike)
 canvas.bind("<KeyPress>", game.move)
 canvas.pack()
 canvas.focus_set()
