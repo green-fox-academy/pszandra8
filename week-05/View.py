@@ -112,13 +112,14 @@ map.drawer()
 hero = Hero(canvas)
 hero.move_down()
 
-skeleton = Skeleton(canvas)
+skeleton1 = Skeleton(canvas)
+skeleton2 = Skeleton(canvas)
+skeleton3 = Skeleton(canvas)
 
-def three_times():
-    for i in range(3):
-        skeleton.drop_skeleton()
+skeleton1.drop_skeleton()
+skeleton2.drop_skeleton()
+skeleton3.drop_skeleton()
 
-three_times()
 boss = Boss(canvas)
 boss.drop_boss()
 
@@ -130,51 +131,67 @@ class Game(object):
         if e.keysym == "Up":
             if hero.hy >= 72 and map.area[(hero.hy - 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.hy -= 72
                 hero.move_up()
             else:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.move_up()
 
         elif e.keysym == "Down":
             if hero.hy <= 640 and map.area[(hero.hy + 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.hy += 72
                 hero.move_down()  
             else:
                 map.drawer()
                 boss.drop_boss()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 hero.move_down()
         elif e.keysym == "Left":
             if hero.hx >= 72 and map.area[hero.hy // 72][(hero.hx - 72) // 72] == 0:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.hx -= 72
                 hero.move_left()
             else:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.move_left()
 
         elif e.keysym == "Right":
             if hero.hx <= 640 and map.area[hero.hy // 72][(hero.hx + 72) // 72] == 0:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.hx += 72
                 hero.move_right()
             else:
                 map.drawer()
-                three_times()
+                skeleton1.drop_skeleton()
+                skeleton2.drop_skeleton()
+                skeleton3.drop_skeleton()
                 boss.drop_boss()
                 hero.move_right()
 
