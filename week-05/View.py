@@ -20,7 +20,7 @@ class Map(object):
             [0, 1, 0, 1, 0, 0, 0, 0, 1, 0],
             [0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
             [0, 0, 0, 0, 0, 1, 1, 0, 1, 0],
-            [0, 1, 1, 1, 0, 0, 0, 0, 1, 0],
+            [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 1, 1, 0, 1, 0]]
 
     def drawer(self):
@@ -33,16 +33,20 @@ class Map(object):
                 else:
                     image = canvas.create_image(self.x, self.y, anchor = NW, image = self.wall)
 
+map = Map()    
+
 class Skeleton(object):
     def __init__(self, canvas):
-       self.canvas = canvas
-       self.sx = random.randint(1, 660)
-       self.sy = random.randint(1, 660)
-       self.zx = random.randint(1, 660)
-       self.zy = random.randint(1, 660)
-       self.vx = random.randint(1, 660)
-       self.vy = random.randint(1, 660)
-       self.skeleton_img = PhotoImage(file = "skeleton.gif")
+        self.canvas = canvas
+        self.d6 = random.randint(1, 6) 
+        self.position = [0, 72, 144, 216, 288, 360, 432, 504, 576, 648]
+        self.sx = random.choice(self.position)
+        self.sy = random.choice(self.position)
+        self.zx = random.choice(self.position)
+        self.zy = random.choice(self.position)
+        self.vx = random.choice(self.position)
+        self.vy = random.choice(self.position)
+        self.skeleton_img = PhotoImage(file = "skeleton.gif")
        
     def drop_skeleton(self):
         self.canvas.create_image(self.sx, self.sy, anchor = NW, image = self.skeleton_img)
@@ -52,22 +56,34 @@ class Skeleton(object):
 class Boss(object):
     def __init__(self, canvas):
         self.canvas = canvas
-        self.bx = random.randint(1, 660)
-        self.by = random.randint(1, 660)
+        self.d6 = random.randint(1, 6) 
+        self.position = [0, 72, 144, 216, 288, 360, 432, 504, 576, 648]
+        self.bx = random.choice(self.position)
+        self.by = random.choice(self.position)
         self.boss_img = PhotoImage(file = "boss.gif")
+        self.HP: (2 * x * self.d6) + self.d6
+        self.DP: x / 2 * self.d6 + (self.d6 / 2)
+        self.SP: x * self.d6 (+x)
 
     def drop_boss(self):
+        #if map.area[self.by // 72][self.bx // 72] == 0:
         self.canvas.create_image(self.bx, self.by, anchor = NW, image = self.boss_img)
+        #else:
+            #Boss.drop_boss(self)
 
 class Hero(object):
     def __init__(self, canvas):
+        self.canvas = canvas
+        self.d6 = random.randint(1, 6) 
         self.hx = 0
         self.hy = 0
-        self.canvas = canvas
         self.down = PhotoImage(file = "hero-down.gif")
         self.up = PhotoImage(file = "hero-up.gif")
         self.right = PhotoImage(file = "hero-right.gif")
         self.left = PhotoImage(file = "hero-left.gif")
+        self.HP: 20 + 3 * self.d6
+        self.DP: 2 * self.d6
+        self.SP: 5 + self.d6
 
     def move_up(self):
         self.canvas.create_image(self.hx, self.hy, anchor = NW, image = self.up)
@@ -81,7 +97,6 @@ class Hero(object):
     def move_down(self):
         canvas.create_image(self.hx, self.hy, anchor = NW, image = self.down)
 
-map = Map()
 map.drawer()
 
 hero = Hero(canvas)
