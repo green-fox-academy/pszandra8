@@ -2,7 +2,7 @@ from tkinter import *
 import random
 
 root = Tk()
-canvas = Canvas(root, width = "720", height = "720")
+canvas = Canvas(root, width = "720", height = "760")
 
 class Map(object):
 
@@ -46,12 +46,18 @@ class Skeleton(object):
         self.zy = random.choice(self.position)
         self.vx = random.choice(self.position)
         self.vy = random.choice(self.position)
+        self.HP = (2 * 3 * self.d6) + self.d6
+        self.DP = 3 / 2 * self.d6 + (self.d6 / 2)
+        self.SP = (3 * self.d6) + 3
         self.skeleton_img = PhotoImage(file = "skeleton.gif")
        
     def drop_skeleton(self):
+        #if map.area[self.sy // 72][self.sx // 72] == 0:
         self.canvas.create_image(self.sx, self.sy, anchor = NW, image = self.skeleton_img)
         self.canvas.create_image(self.zx, self.zy, anchor = NW, image = self.skeleton_img)
         self.canvas.create_image(self.vx, self.vy, anchor = NW, image = self.skeleton_img)
+        #else:
+            #self.drop_skeleton()
 
 class Boss(object):
     def __init__(self, canvas):
@@ -61,15 +67,15 @@ class Boss(object):
         self.bx = random.choice(self.position)
         self.by = random.choice(self.position)
         self.boss_img = PhotoImage(file = "boss.gif")
-        self.HP: (2 * x * self.d6) + self.d6
-        self.DP: x / 2 * self.d6 + (self.d6 / 2)
-        self.SP: x * self.d6 (+x)
+        self.HP = (2 * 3 * self.d6) + self.d6
+        self.DP = 3 / 2 * self.d6 + (self.d6 / 2)
+        self.SP = 3 * self.d6
 
     def drop_boss(self):
         #if map.area[self.by // 72][self.bx // 72] == 0:
         self.canvas.create_image(self.bx, self.by, anchor = NW, image = self.boss_img)
         #else:
-            #Boss.drop_boss(self)
+            #self.drop_boss()
 
 class Hero(object):
     def __init__(self, canvas):
@@ -81,9 +87,10 @@ class Hero(object):
         self.up = PhotoImage(file = "hero-up.gif")
         self.right = PhotoImage(file = "hero-right.gif")
         self.left = PhotoImage(file = "hero-left.gif")
-        self.HP: 20 + 3 * self.d6
-        self.DP: 2 * self.d6
-        self.SP: 5 + self.d6
+        self.level = 1
+        self.HP = 20 + 3 * self.d6
+        self.DP = 2 * self.d6
+        self.SP = 5 + self.d6
 
     def move_up(self):
         self.canvas.create_image(self.hx, self.hy, anchor = NW, image = self.up)
@@ -96,6 +103,11 @@ class Hero(object):
 
     def move_down(self):
         canvas.create_image(self.hx, self.hy, anchor = NW, image = self.down)
+
+    def level_up(self):
+        self.hp += randint(1, 6)
+        self.dp += randint(1, 6)
+        self.sp += randint(1, 6)
 
 map.drawer()
 
@@ -164,6 +176,14 @@ class Game(object):
                 boss.drop_boss()
                 hero.move_right()
 
+class Status(object):
+    def __init__(self):
+        canvas.create_text(210, 740, text = "Hero (Level " + str(hero.level) + ")")
+        canvas.create_text(315, 740, text = "Hero HP " + str(hero.HP))
+        canvas.create_text(415, 740, text = "Hero DP " + str(hero.DP))
+        canvas.create_text(515, 740, text = "Hero SP " + str(hero.SP))
+
+status = Status()
 game = Game()
 canvas.bind("<KeyPress>", game.move)
 canvas.pack()
