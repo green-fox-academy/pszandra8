@@ -24,9 +24,9 @@ class CandyShop(object):
             self.candy_count -= int(piece)
 
     def raise_prices(self, percentage):
-        self.percentage = int(percentage) / 100 + 1
-        self.candy_price *= self.percentage
-        self.lollipop_price *= self.percentage
+        percentage = int(percentage) / 100 + 1
+        self.candy_price *= percentage
+        self.lollipop_price *= percentage
         
     def buy_sugar(self, sugar_amount):
         self.sugar += sugar_amount
