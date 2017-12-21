@@ -30,8 +30,7 @@ class CandyShop(object):
         
     def buy_sugar(self, sugar_amount):
         self.sugar += sugar_amount
-        self.price_of_sugar = sugar_amount / 10
-        self.income -= self.price_of_sugar
+        self.income -= sugar_amount * 0.1
 
     def __str__(self):
         return "Inventory: " + str(self.candy_count) + " candies, " + str(self.lollipop_count) + " lollipops, " + "income: " + str(self.income) + ", Sugar: " + str(self.sugar) + " gr"
