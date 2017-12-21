@@ -21,7 +21,7 @@ class FileManager(object):
             favorite_file.close()
             favorite_file = open(filename, "a")
             user_input = sys.argv[1]
-            if user_input + "\n" not in lines:
+            if user_input + "\n" not in lines and user_input not in lines:
                 favorite_file.write("\n" + user_input)
                 favorite_file.close()
                 print("Animal has been added to your favorites")
