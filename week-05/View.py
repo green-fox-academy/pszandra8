@@ -246,7 +246,7 @@ class Game(object):
 
         elif e.keysym == "Escape":
             canvas.create_rectangle(0, 0, 720, 760, fill = "white")
-            canvas.create_text(355, 380, font = "Comic 50 italic", text = "Come again, bye")
+            canvas.create_text(355, 380, font = "Comic 50 italic", text = "Thanks for playing!\n  Come again, bye")
 
 class Status(object):
     def __init__(self):

@@ -1,10 +1,38 @@
+import sys
+filename = "favourites.txt"
 
-# The program's aim is to collect your favourite animals and store them in a text file.
-# There is a given text file called '''favourites.txt''', it will contain the animals
-# If ran from the command line without arguments
-# It should print out the usage:
-# ```fav_animals [animal] [animal]```
-# You can add as many command line arguments as many favourite you have.
-# One animal should be stored only at once
-# Each animal should be written in separate lines
-# The program should only save animals, no need to print them
+class FileManager(object):
+    def file_opener(self):
+        try:
+            open_file = open(filename, "r")
+            lines = open_file.readlines()
+            open_file.close()
+            text = ""
+            for line in lines:
+                text += line
+            print("Favorite animals:\n" + text)
+        except FileNotFoundError:
+            print("Did not find the file")
+
+    def add_text(self):
+        try:
+            favorite_file = open(filename, "r")
+            lines = favorite_file.readlines()
+            favorite_file.close()
+            favorite_file = open(filename, "a")
+            user_input = sys.argv[1]
+            if user_input not in lines:
+                favorite_file.write("\n" + user_input)
+                favorite_file.close()
+                print("Animal has been added to your favorites")
+            else:
+                print("Animal is already in the list")
+        except IOError:
+            print("Unable to write file.")
+
+manager = FileManager()
+
+if len(sys.argv) == 1:
+    manager.file_opener()
+elif len(sys.argv) >= 2:
+    manager.add_text()
