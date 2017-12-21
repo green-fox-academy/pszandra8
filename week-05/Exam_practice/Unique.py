@@ -14,4 +14,4 @@ def unique_characters(string):
             keys.append(n)
     return keys
 
-print(unique_characters("anagr amand"))
+print(unique_characters("anagram"))
