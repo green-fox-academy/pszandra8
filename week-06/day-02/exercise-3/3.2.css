@@ -5,6 +5,7 @@
 
 .container {
     display: flex;
+    justify-content: space-between;
     background-color: #ffd62a;
     height: 300px;
     width: 100%;
@@ -17,5 +18,4 @@
     height: 100px;
     width: 100px;
     background-color: #b02aff;
-    margin-right: 10px;
 }

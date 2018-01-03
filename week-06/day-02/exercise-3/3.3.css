@@ -5,6 +5,7 @@
 
 .container {
     display: flex;
+    justify-content: flex-end;
     background-color: #ffd62a;
     height: 300px;
     width: 100%;
@@ -12,10 +13,9 @@
 
 .item {
     list-style: none;
-    position: relative;
-    top: 100px;
+    align-self: flex-end;
     height: 100px;
     width: 100px;
     background-color: #b02aff;
-    margin-right: 10px;
+    margin-left: 10px;
 }

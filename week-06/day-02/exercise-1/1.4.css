@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    height: 300px;
   }
   
   .item {
@@ -8,16 +9,19 @@
   }
 
   .green {
-    flex-grow: 1;
+    height: 25%;
+    order: 0;
     background-color: #51d400;
   }
 
   .yellow {
-    flex-grow: 1;
+    height: 50%;
+    order: 2;
     background-color: #ffd62a;
   }
 
   .purple {
-    flex-grow: 2;
+    height: 25%;
+    order: 1;
     background-color: #b02aff;
   }

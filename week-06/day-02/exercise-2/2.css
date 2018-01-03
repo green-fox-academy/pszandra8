@@ -14,8 +14,8 @@
 }
 
 .purple {
+    align-self: center;
     position: absolute;
-    top: 90px;
     right: 44%;
     height: 120px;
     width: 120px;
