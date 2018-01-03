@@ -8,16 +8,16 @@
   }
 
   .green {
-    height: 100px;
+    flex-grow: 1;
     background-color: #51d400;
   }
 
   .yellow {
-    height: 100px;
+    flex-grow: 1;
     background-color: #ffd62a;
   }
 
   .purple {
-    height: 200px;
+    flex-grow: 2;
     background-color: #b02aff;
   }

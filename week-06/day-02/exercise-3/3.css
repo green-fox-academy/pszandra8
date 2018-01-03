@@ -11,9 +11,10 @@
 }
 
 .item {
+    position: relative;
     top: 100px;
     height: 100px;
     width: 100px;
     background-color: #b02aff;
-    flex-direction: row;
+    margin-right: 10px;
 }
