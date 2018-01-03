@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.black {
+    height: 700px;
+    width: 800px;
+    border-radius: 20px;
+    border: 5px solid;
+}
+
+.yellow{
+    margin: 10%;
+    height: 80%;
+    width: 80%;
+    background-color: yellow;
+}
+
+.purple {
+    height: 80px;
+    width: 100%;
+    background-color: purple;
+    justify-content: space-between;
+}
+
+.green {
+    margin: 20%;
+    height: 80%;
+    background-color: green;
+}
+
+.cyan {
+    position: absolute;
+    height: 20px;
+    width: 50px;
+    background-color: cyan;
+}
