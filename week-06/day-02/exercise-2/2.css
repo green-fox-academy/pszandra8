@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.yellow {
+    height: 300px;
+    width: 100%;
+    background-color: #ffd62a;
+}
+
+.purple {
+    position: absolute;
+    top: 90px;
+    right: 44%;
+    height: 120px;
+    width: 120px;
+    background-color: #b02aff;
+}
