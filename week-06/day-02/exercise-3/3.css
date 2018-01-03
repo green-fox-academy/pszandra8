@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: inline-flex;
+    background-color: #ffd62a;
+    height: 300px;
+    width: 100%;
+}
+
+.item {
+    top: 100px;
+    height: 100px;
+    width: 100px;
+    background-color: #b02aff;
+    flex-direction: row;
+}

@@ -3,20 +3,18 @@
   }
   
   .item {
+    width: 190px;
     height: 190px;
   }
 
   .green {
-    width: 33.3%;
     background-color: #51d400;
   }
 
   .yellow {
-    width: 33.3%;
     background-color: #ffd62a;
   }
 
   .purple {
-    width: 33.3%;
     background-color: #b02aff;
   }

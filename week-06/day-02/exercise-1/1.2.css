@@ -7,16 +7,16 @@
   }
 
   .green {
-    width: 25%;
+    flex-grow: 1;
     background-color: #51d400;
   }
 
   .yellow {
-    width: 50%;
+    flex-grow: 2;
     background-color: #ffd62a;
   }
 
   .purple {
-    width: 25%;
+    flex-grow: 1;
     background-color: #b02aff;
   }
