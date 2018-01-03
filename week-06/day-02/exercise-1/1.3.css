@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .item {
+    height: 190px;
+  }
+
+  .green {
+    width: 25%;
+    background-color: #51d400;
+  }
+
+  .yellow {
+    width: 50%;
+    background-color: #ffd62a;
+  }
+
+  .purple {
+    width: 25%;
+    background-color: #b02aff;
+  }
