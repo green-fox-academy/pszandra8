@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #2f3060;
+    justify-content: center;
+    width: 50%;
+    padding: 100px;
+}
+
+button {
+    margin: 2%;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+button:nth-child(1) {
+    background-color: blue;
+    box-shadow: 0 2px darkblue;
+}
+
+button:nth-child(2) {
+    background-color: green;
+    box-shadow: 0 2px darkgreen;
+}
+button:nth-child(3) {
+    background-color: red;
+    box-shadow: 0 2px darkred;
+}
