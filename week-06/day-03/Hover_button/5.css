@@ -31,10 +31,12 @@
     border: solid 3px orangered;
 }
 
-button:hover .orange {
-    transform: rotate(45deg);
+.orange:hover {
+    transform: rotate(90deg);
+    transition: 2s ease;
 }
 
-button:hover .button {
+.button:hover {
     color: orangered;
+    transition: 2s ease;
 }
