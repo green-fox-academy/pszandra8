@@ -13,7 +13,14 @@
     justify-content: center;
 }
 
-.button {
+.wrapper {
+    align-self: center;
+    height: 130px;
+    width: 130px;
+}
+
+.grey {
+    position: absolute;
     align-self: center;
     height: 130px;
     width: 130px;
@@ -31,12 +38,12 @@
     border: solid 3px orangered;
 }
 
-.orange:hover {
+.wrapper:hover .orange {
     transform: rotate(90deg);
     transition: 2s ease;
 }
 
-.button:hover {
+.wrapper:hover .grey {
     color: orangered;
     transition: 2s ease;
 }
