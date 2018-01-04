@@ -19,7 +19,7 @@ button {
 
 button:nth-child(1) {
     background-color: #4361a0;
-    box-shadow: 0 2px #2d4983;
+    box-shadow: 0 4px #2d4983;
 }
 
 button:nth-child(1):hover {
@@ -32,11 +32,11 @@ button:nth-child(1):active {
 
 button:nth-child(2) {
     background-color: #1aa854;
-    box-shadow: 0 2px #109144;
+    box-shadow: 0 4px #109144;
 }
 
 button:nth-child(2):hover {
-    background-color: #2dbd67;
+    background-color: #40d780;
 }
 
 button:nth-child(2):active {
@@ -45,7 +45,7 @@ button:nth-child(2):active {
 
 button:nth-child(3) {
     background-color: #d54534;
-    box-shadow: 0 2px #bf3325;
+    box-shadow: 0 4px #bf3325;
 }
 
 button:nth-child(3):hover {
