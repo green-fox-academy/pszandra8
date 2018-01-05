@@ -9,6 +9,7 @@ html {
 
 body {
     height: 100%;
+    border: solid 5px;
 }
 
 .container {
