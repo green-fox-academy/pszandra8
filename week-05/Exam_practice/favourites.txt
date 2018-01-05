@@ -1,7 +1,4 @@
 dog
 cat
 Tiger
-d
-dog
-dd
-dd
+Afrikai Elephant

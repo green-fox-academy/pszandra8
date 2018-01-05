@@ -2,7 +2,8 @@ from tkinter import *
 import random
 
 root = Tk()
-canvas = Canvas(root, width = "720", height = "760")
+size = 72
+canvas = Canvas(root, width = size * 10, height = size * 10)
 counter = 0
 
 class Map(object):
@@ -27,8 +28,8 @@ class Map(object):
     def drawer(self):
         for i in range(len(self.area)):
             for j in range(len(self.area[i])):
-                self.y = j * 72
-                self.x = i * 72
+                self.y = j * size
+                self.x = i * size
                 if self.area[j][i] == 0:
                     image = canvas.create_image(self.x, self.y, anchor = NW, image = self.floor)
                 else:
@@ -62,17 +63,17 @@ class Skeleton(object):
 
     def skeleton_mover(self):
         if counter % 2 == 0:
-            if self.sy >= 72 and map.area[(self.sy - 72) // 72][self.sx // 72] == 0:
-                self.sy -= 72
+            if self.sy >= size and map.area[(self.sy - size) // size][self.sx // size] == 0:
+                self.sy -= size
                 self.draw_skeleton()
-            elif self.sy <= 640 and map.area[(self.sy + 72) // 72][self.sx // 72] == 0:
-                self.sy += 72
+            elif self.sy <= 640 and map.area[(self.sy + size) // size][self.sx // size] == 0:
+                self.sy += size
                 self.draw_skeleton()
-            elif self.sy >= 72 and map.area[self.sy // 72][(self.sx - 72) // 72] == 0:
-                self.sx -= 72
+            elif self.sy >= size and map.area[self.sy // size][(self.sx - size) // size] == 0:
+                self.sx -= size
                 self.draw_skeleton()
-            elif self.sy <= 640 and map.area[self.sy // 72][(self.sx + 72) // 72] == 0:
-                self.sx += 72
+            elif self.sy <= 640 and map.area[self.sy // size][(self.sx + size) // size] == 0:
+                self.sx += size
                 self.draw_skeleton()
         else:
             self.draw_skeleton()
@@ -177,89 +178,50 @@ class Game(object):
             counter += 1
             if hero.hy >= 72 and map.area[(hero.hy - 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.hy -= 72
                 hero.move_up()
             else:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.move_up()
 
         elif e.keysym == "Down":
             counter += 1
             if hero.hy <= 640 and map.area[(hero.hy + 72) // 72][hero.hx // 72] == 0:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.hy += 72
                 hero.move_down()  
             else:
                 map.drawer()
-                boss.boss_mover()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
                 hero.move_down()
         elif e.keysym == "Left":
             counter += 1
             if hero.hx >= 72 and map.area[hero.hy // 72][(hero.hx - 72) // 72] == 0:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.hx -= 72
                 hero.move_left()
             else:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.move_left()
 
         elif e.keysym == "Right":
             counter += 1
             if hero.hx <= 640 and map.area[hero.hy // 72][(hero.hx + 72) // 72] == 0:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.hx += 72
                 hero.move_right()
             else:
                 map.drawer()
-                skeleton1.skeleton_mover()
-                skeleton2.skeleton_mover()
-                skeleton3.skeleton_mover()
-                boss.boss_mover()
                 hero.move_right()
 
-        elif e.keysym == "Escape":
+        skeleton1.skeleton_mover()
+        skeleton2.skeleton_mover()
+        skeleton3.skeleton_mover() 
+        boss.boss_mover()
+
+        if e.keysym == "Escape":
             canvas.create_rectangle(0, 0, 720, 760, fill = "white")
             canvas.create_text(355, 380, font = "Comic 50 italic", text = "Thanks for playing!\n  Come again, bye")
 
-class Status(object):
-    def __init__(self):
-        canvas.create_text(210, 740, text = "Hero (Level " + str(hero.level) + ")")
-        canvas.create_text(315, 740, text = "Hero HP " + str(hero.HP) + "/" + str(hero.HP_current))
-        canvas.create_text(415, 740, text = "Hero DP " + str(hero.DP))
-        canvas.create_text(515, 740, text = "Hero SP " + str(hero.SP))
-
-class Battle(object):
-    def __init__(self):
-        pass
-
-    def strike(self, e):
         if e.keysym == "space":
             if hero.hy == skeleton1.sy and hero.hx == skeleton1.sx:
                 skeleton1.HP -= 1
@@ -274,15 +236,16 @@ class Battle(object):
                 boss.HP -= 1
                 hero.HP_current -= 1
 
+class Status(object):
+    def __init__(self):
+        canvas.create_text(210, 740, text = "Hero (Level " + str(hero.level) + ")")
+        canvas.create_text(315, 740, text = "Hero HP " + str(hero.HP) + "/" + str(hero.HP_current))
+        canvas.create_text(415, 740, text = "Hero DP " + str(hero.DP))
+        canvas.create_text(515, 740, text = "Hero SP " + str(hero.SP))
+
 status = Status()
 game = Game()
-battle = Battle()
-canvas.bind("<KeyPress>", battle.strike)
 canvas.bind("<KeyPress>", game.move)
-canvas.pack()
-canvas.focus_set()
-canvas.pack()
-canvas.focus_set()
 canvas.pack()
 canvas.focus_set()
 root.mainloop()

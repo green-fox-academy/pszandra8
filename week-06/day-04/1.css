@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    height: 150px;
+    grid-template-columns: 1fr 3fr 1fr;
+    background-color: purple;
+    grid-gap: 12px;
+    border: solid 12px purple;
+}
+
+.grid > div {
+    background-color: yellow;
+}
+
+.grid > div:nth-child(2) {
+    background-color: green;
+}
