@@ -21,14 +21,38 @@ button {
     border-radius: 2px;
 }
 
-.fa:nth-of-type(1) {
+.fa {
     color: white;
 }
 
-button:nth-child(2) > .fa {
+.sure, .delete {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    color: white;
+    display: none;
+}
+
+.delete {
+    background-color: red;
+}
+
+.sure {
+    background-color: #38ba7d;
+}
+
+button:nth-child(1):hover > .fa {
     color: red;
 }
 
-button:nth-child(3) > .fa {
+button:nth-child(2):hover > .fa {
     color: #38ba7d;
+}
+
+button:nth-child(1):hover .delete {
+    display: flex;
+}
+
+button:nth-child(2):hover .sure {
+    display: flex;
 }

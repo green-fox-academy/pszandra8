@@ -40,8 +40,8 @@ body {
 }
 
 .cyan {
-    position: absolute;
-    height: 20px;
-    width: 50px;
+    width: 80px;
+    height: 35px;
+    margin: 10px;
     background-color: cyan;
 }
