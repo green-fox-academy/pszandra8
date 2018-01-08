@@ -8,7 +8,7 @@ for (let i = 1; i < lineCount + 1; i++) {
     console.log(' '.repeat(lineCount - i) + '*'.repeat(i) + '*'.repeat(i-1));
   }
 
-  for (let i = lineCount - 1; i > 0; i--) {
+  for (let i = lineCount; i > 0; i--) {
     console.log(' '.repeat(lineCount - i) + '*'.repeat(i) + '*'.repeat(i-1));
   }
 }
