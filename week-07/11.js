@@ -46,7 +46,7 @@ else {
 }
 
 let h = 1357988018575474;
-if (h % 11 === 0) {
+if (h % 11 == 0) {
     console.log(true);
 }
 else {
