@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: EventListeners</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    div {
+      height: 100vh;
+    }
+    .party {
+      background: url(https://media.giphy.com/media/4c4jQPdVv381G/giphy.gif);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button>Party</button>
+  </div>
+
+  <script>
+      'use strict';
+
+      let button = document.querySelector('button');
+      let partyDiv = document.querySelector('div');
+
+      function partyGenerator() {
+          partyDiv.classList.toggle('party');
+      }
+
+      button.addEventListener('click', partyGenerator);
+  </script>
+</body>
+</html>
