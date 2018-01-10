@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
+<body>
+  <p class="apple">apple</p>
+  <p class="balloon">banana</p>
+  <p class="cat">car</p>
+  <p class="dog">dolphin</p>
+
+  <script>
+    'use strict';
+    let paragraphs = document.querySelectorAll('p');
+
+    for (let i = 0; i <= paragraphs.legth; i++) {
+      paragraphs[i].textContent = document.querySelector('.dog').textContent;
+    }
+  </script>
+</body>
+</html>
