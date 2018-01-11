@@ -1,6 +1,6 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -21,22 +21,22 @@ body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  grid-gap: 0;
   position: relative;
   margin-right: auto;
   margin-left: auto;
   top: 15%;
-  width: 1000px;
-  height: 300px;
-  background-image: url('P1060016.JPG');
+  width: 80%;
+  height: 400px;
+  background-image: url('first.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 button {
-  background-color: lightgray;
-  width: 80px;
-  height: 100%;
+  background: linear-gradient( white, lightgrey);
   grid-row: 1/5;
+  outline: none;
 }
 
 .right {
@@ -56,11 +56,27 @@ button {
   color: rgba(255, 255, 255, 0.6);
   grid-column: 2/12;
   grid-row: 4/5;
-  padding: 15px;
+  padding: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p {
+  font-size: 13px;
 }
 
 h1 {
   color: rgba(255, 255, 255, 0.8);
-  padding-bottom: 10px;
   font-size: 20px;
+  font-weight: lighter;
+  padding-bottom: 8px;
+}
+
+.thumbnailSection {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(1, 70px);
+}
+
+ul {
+  list-style-type: none;
 }
