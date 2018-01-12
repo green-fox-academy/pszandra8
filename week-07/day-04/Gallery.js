@@ -28,7 +28,6 @@ const pictureProperties = [
   }
   ]
 
-
 let current = 0;
 
 function shuffleRight() {
@@ -36,7 +35,7 @@ function shuffleRight() {
     mainText.textContent = pictureProperties[current + 1].content;
     current++;
     if (current === 4) {
-      current = 0;
+      current = -1;
     }
 }
 
@@ -45,9 +44,7 @@ function shuffleLeft() {
     mainText.textContent = pictureProperties[current - 1].content;
     current--;
     if (current === 0) {
-      gallery.style.backgroundImage = pictureProperties[4].category;
-      mainText.textContent = pictureProperties[4].content;
-      current = 4;
+      current = pictureProperties.length;
     }
 }
 
