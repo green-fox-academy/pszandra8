@@ -34,10 +34,8 @@ let current = 0;
 function shuffleRight() {
     gallery.style.backgroundImage = pictureProperties[current + 1].category;
     mainText.textContent = pictureProperties[current + 1].content;
-    current += 1;
+    current++;
     if (current === 4) {
-      gallery.style.backgroundImage = pictureProperties[0].category;
-      mainText.textContent = pictureProperties[0].content;
       current = 0;
     }
 }
@@ -45,11 +43,11 @@ function shuffleRight() {
 function shuffleLeft() {
     gallery.style.backgroundImage = pictureProperties[current - 1].category;
     mainText.textContent = pictureProperties[current - 1].content;
-    current -= 1;
+    current--;
     if (current === 0) {
       gallery.style.backgroundImage = pictureProperties[4].category;
       mainText.textContent = pictureProperties[4].content;
-      current = 4;   //1st picture doesn show
+      current = 4;
     }
 }
 
