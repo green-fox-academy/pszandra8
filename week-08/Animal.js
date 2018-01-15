@@ -1,6 +1,6 @@
 function Animal() {
-  this.hunger = 5,
-  this.thirst = 5,
+  this.hunger = 5;
+  this.thirst = 5;
   this.eat = function() {
     if (this.hunger !== 0) {
       this.hunger -= 1;
@@ -58,21 +58,16 @@ function Farm(slots) {
     this.slaughter();
 
   this.reports = function() {
-    let animalNum = 0;
-    for (i = 0; i <= this.animals; i++) {
-      console.log(i);
-      animalNum = i;
-    if (animalNum === 0) {
+    if (this.animals.length === 0) {
       console.log('bankrupt');
     }
-    else if (animalNum > 0 && this.slots > animalNum) {
+    else if (this.animals.length > 0 && this.slots > this.animals.length) {
       console.log('okay');
     }
-    else if (animalNum === this.slots) {
+    else if (this.animals.length === this.slots) {
       console.log('full')
     }
   }
-}
 }
 
 const SheepFarm = new Farm(20);
@@ -81,6 +76,8 @@ SheepFarm.breed();
 SheepFarm.breed();
 
 console.log(SheepFarm.animals);
+
+SheepFarm.reports();
 
 console.log(SheepFarm.animals);
 
