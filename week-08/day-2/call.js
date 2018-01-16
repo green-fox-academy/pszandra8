@@ -8,8 +8,8 @@ function factorialTillLimitWithCallback(limit, callback) {
   }
 }
 
-const number = function (factorial) {
+const printing = function (factorial) {
   console.log(factorial);
 }
 
-console.log(factorialTillLimitWithCallback(20, number));
+console.log(factorialTillLimitWithCallback(20, printing));
