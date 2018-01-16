@@ -24,18 +24,24 @@ Pavo cristatus;5860;Violet
 Corythornis cristata;5358;Khaki
 Loris tardigratus;725;Orange`;
 
-// Convert the above string (which is in CSV format) to an array of objects
-// Columns should map to the following object:
-//  { name: "Macropus agilis", id: 1241, color_code: "Teal" }
+let result = data
+  .split('\n')
+  .map(function(item) {
+    return item.split(';');
+  })
+  .map(function(something) {
+    return {
+      name: something[0],
+      id: something[1],
+      color_code: something[2]
+    };
+    })
 
-// Remove all duplicates based on their name, always keep the first one
-// Don't use for or forEach
+    .filter(function(element1, index, array) {
+      firstMatchingIndex = array.findIndex(function(element2) {
+        return element1.name === element2.name;
+      });
+      return index === firstMatchingIndex;
+    })
 
-function createObj(data) {
-  let lines = data.split('\n');
-  let parts = lines.map(function (items) {
-    let values = items.split(';');
-  }
-};
-
-createObj();
+    console.log(result);
