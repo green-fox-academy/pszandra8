@@ -1,12 +1,23 @@
-// Create a prison function, that has your name as a private fugutive variable
-// The function should return an object that has two methods:
-//  - visit() // logs "[yourname] is visited [x] time(s)" to the console.
-//    - the [x] times displayes the numbers the function is called
-//    - If the fugitive variable is empty, then display "Nobody is here anymore"
-//  - escape() // logs "BREAKING NEWS, [yourname] escaped the prison" to the console.
-//    - it should empties the fugitive variable
+function prison (name) {
+  let fugutive = name;
+  let fugutiveCount = 0;
+  let visits = 0;
+  this.visit = function () {
+    if (fugutiveCount === 0) {
+      console.log('Nobody is here anymore');
+    }
+    else {
+      visits++;
+      console.log(fugutive, ' is visited ', visits, ' time(s)');
+    }
+  }
+  this.escape = function () {
+    console.log('BREAKING NEWS,', fugutive, 'escaped the prison');
+    fugutiveCount = 0;
+  }
+}
 
-const alcatraz = prison('Sad Panda');
+const alcatraz = new prison('Sad Panda');
 
 alcatraz.visit() // Sad Panda is visited 1 time(s)
 alcatraz.visit() // Sad Panda is visited 2 time(s)
