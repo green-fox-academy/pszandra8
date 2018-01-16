@@ -9,7 +9,7 @@ var fruits = [
   'banana'
 ];
 
-const eCal = fruits.map(function (fruit) {
+const eCount = fruits.map(function (fruit) {
   let counter = 0;
   for (let i = 0; i <= fruit.length; i++) {
     if (fruit[i] === 'e') {
@@ -19,4 +19,4 @@ const eCal = fruits.map(function (fruit) {
   return counter;
 });
 
-console.log(eCal);
+console.log(eCount);

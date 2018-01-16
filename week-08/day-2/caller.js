@@ -1,7 +1,5 @@
 'use strict';
 
-// Implement the selectLastEvenNumber function that takes an array and callback,
-// it should call the callback immediately with the last even number on the array
 let numIndex = 0;
 
 function selectLastEvenNumber(numbers, action) {
