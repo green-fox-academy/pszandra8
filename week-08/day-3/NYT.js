@@ -18,9 +18,12 @@ httpRequest.onload = function () {
         let pDate = document.createElement('p');
         pDate.textContent = element.pub_date;
         document.body.appendChild(pDate);
+
+        let permaLink = document.createElement('a');
+        permaLink.textContent = element.web_url;
+        document.body.appendChild(permaLink);
       });
   } else {
       console.log('error');
   }
 };
-
