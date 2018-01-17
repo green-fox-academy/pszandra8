@@ -20,7 +20,8 @@ httpRequest.onload = function () {
         document.body.appendChild(pDate);
 
         let permaLink = document.createElement('a');
-        permaLink.textContent = element.web_url;
+        permaLink.textContent = 'click here';
+        permaLink.setAttribute('href', element.web_url);
         document.body.appendChild(permaLink);
       });
   } else {
