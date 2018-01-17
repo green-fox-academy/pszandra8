@@ -1,5 +1,7 @@
+'use strict'
+
 let httpRequest = new XMLHttpRequest();
-httpRequest.open('GET', 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=XAkDFy3BV2Acl20d2e4B0HAKI1MviO4j&limit=16', true); // Also try http://444.hu/feed
+httpRequest.open('GET', 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=XAkDFy3BV2Acl20d2e4B0HAKI1MviO4j&limit=16', true);
 
 httpRequest.onload = function() {
   let ourData = JSON.parse(httpRequest.responseText).data;
