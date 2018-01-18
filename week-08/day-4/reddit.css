@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: lightgray;
+}
+
+header {
+  width: 100%;
+  height: 250px;
+  text-align: center;
+  background-image: url('space.jpg');
+  color: white;
+}
+
+.space {
+  position: relative;
+  top: 40%;
+  font-family: 'Lato', sans-serif;
+  font-size: 50px;
+  letter-spacing: 70px;
+  font-weight: lighter;
+}
+
+section {
+  display: inline-block;
+}
+
+.posts {
+  background-color: white;
+  margin: 1.5% 0 1.5% 1.5%;
+  height: 100%;
+  width: 60%;
+}
+
+.submit {
+  float: right;
+  width: 35%;
+  margin: 1.5%;
+  height: 50px;
+  background-color: aqua;
+  color: white;
+  text-align: center;
+}
+
+.list {
+  padding: 5px 30px;
+  float: right;
+  width: 25%;
+  margin: 1.5%;
+  height: 200px;
+  background-color: rgb(220,220,220);
+
+}
+
+ul > .description {
+  margin: 10px;
+  text-align: center;
+}
