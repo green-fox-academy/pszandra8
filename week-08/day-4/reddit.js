@@ -30,6 +30,12 @@ httpRequest.onreadystatechange = function() {
       titleH1.classList.add('textHeader');
       textBox.appendChild(titleH1);
 
+      let url = document.createElement('a');
+      url.classList.add('url');
+      url.textContent = '(' + element.url + ')';
+      url.setAttribute('href', element.url);
+      titleH1.appendChild(url);
+
       let up = document.createElement('div');
       up.classList.add('up');
       arrows.appendChild(up);
@@ -38,6 +44,25 @@ httpRequest.onreadystatechange = function() {
       down.classList.add('down');
       arrows.appendChild(down);
 
+      let creator = document.createElement('a');
+      // creator.classList.add('creator');
+      // creator.setAttribute('href', 'none');
+      if (element.user === null) {
+        creator.textContent = 'anonymus';
+      } else {
+        creator.textContent = element.user;
+      }
+
+      let time = function() {
+        let timeInfo = document.createElement('p');
+        time.textContent = element.id;
+        submitInfo.appendChild(timeInfo);}
+
+      let submitInfo = document.createElement('p');
+      submitInfo.classList.add('submitInfo');
+      submitInfo.textContent = 'submitted ' + time() + ' time ago, by ' + creator.textContent;
+      textBox.appendChild(submitInfo);
+      
       let modify= document.createElement('a');
       modify.classList.add('modify');
       modify.textContent = 'modify';
