@@ -53,16 +53,6 @@ header {
   margin-bottom: 2.5%;
 }
 
-.submit {
-  margin: 10px;
-  text-decoration-line: none;
-  background-color: blue;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  padding: 15px 100px;
-}
-
 .required {
   color: red;
 }
@@ -73,4 +63,24 @@ header {
   margin: 10px 0 10px 0;
   border-radius: 2px;
   background-color: lightgray;
+}
+
+.submit {
+  margin: 0 5px 0 10px;
+  text-decoration-line: none;
+  background-color: #00008B;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  padding: 15px 99.5px;
+}
+
+.back {
+  margin: 0 5px;
+  text-decoration-line: none;
+  background-color: #4B0082;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  padding: 15px 78.5px;
 }
