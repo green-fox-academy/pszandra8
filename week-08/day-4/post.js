@@ -27,8 +27,6 @@ function post(string){
   httpRequest.open('POST', 'http://secure-reddit.herokuapp.com/simple/posts');
   httpRequest.setRequestHeader('Accept', 'application/json');
   httpRequest.setRequestHeader('Content-type', 'application/json');
-  httpRequest.send(string);
-  string = JSON.stringify(string);
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
       console.log('okay');
@@ -37,4 +35,6 @@ function post(string){
       console.log('could not complete the request');
     }
     }
+    httpRequest.send(string);
+    string = JSON.stringify(string);
 }
