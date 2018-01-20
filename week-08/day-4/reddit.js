@@ -36,13 +36,18 @@ httpRequest.onreadystatechange = function() {
       url.setAttribute('href', element.url);
       titleH1.appendChild(url);
 
-      let up = document.createElement('div');
+      let up = document.createElement('button');
       up.classList.add('up');
       arrows.appendChild(up);
 
-      let down = document.createElement('div');
+      let down = document.createElement('button');
       down.classList.add('down');
       arrows.appendChild(down);
+
+      let number = document.createElement('div');
+      number.classList.add('number');
+      number.textContent = 0;
+      arrows.appendChild(number);
 
       let creator = document.createElement('a');
       // creator.classList.add('creator');
@@ -62,18 +67,34 @@ httpRequest.onreadystatechange = function() {
       submitInfo.classList.add('submitInfo');
       submitInfo.textContent = 'submitted ' + time() + ' time ago, by ' + creator.textContent;
       textBox.appendChild(submitInfo);
+
+      let actionBox = document.createElement('div');
+      actionBox.classList.add('actionBox');
+      textBox.appendChild(actionBox);
       
-      let modify= document.createElement('a');
+      let modify = document.createElement('a');
       modify.classList.add('modify');
       modify.textContent = 'modify';
       modify.setAttribute('href', 'none');
-      textBox.appendChild(modify);
+      actionBox.appendChild(modify);
 
       let remove = document.createElement('a');
       remove.classList.add('remove');
       remove.textContent = 'remove';
       remove.setAttribute('href', 'none');
-      textBox.appendChild(remove);
+      actionBox.appendChild(remove);
+
+      up.addEventListener('click', function(){
+        up.classList.add('upvoted');
+        down.classList.remove('downvoted');
+        number.textContent ++;
+      })
+
+      down.addEventListener('click', function(){
+        down.classList.add('downvoted');
+        up.classList.remove('upvoted');
+        number.textContent --;
+      })
     });
 };
 }

@@ -110,12 +110,14 @@ ul > .description {
 }
 
 .up, .down {
+  display: block;
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
   margin-right: auto;
   margin-left: auto;
   position: relative;
+  border: none;
 }
 
 .up {
@@ -126,6 +128,12 @@ ul > .description {
 .down {
   top: 50%;
   background-image: url('downvote.png');
+}
+
+.number {
+  color: grey;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .text-content {
@@ -154,17 +162,12 @@ ul > .description {
   text-decoration-line: none;
   color: black;
   font-size: 11px;
-  grid-row: 4/5;
   color: gray;
+  padding-right: 5px;
 }
-
-.modify {
-  grid-column: 2/3;
-}
-
-.remove {
-  grid-column: 3/4;
-  padding-right: 120px;
+.actionBox {
+  grid-row: 4/5;
+  grid-column: 2/4;
 }
 
 .url {
@@ -186,6 +189,13 @@ ul > .description {
   grid-column: 2/7;
   grid-row: 3/4;
   font-size: 15px;
-  padding-bottom: 18px;
   color: grey;
+}
+
+.upvoted {
+  background-image: url('upvoted.png');
+}
+
+.downvoted {
+  background-image: url('downvoted.png');
 }
