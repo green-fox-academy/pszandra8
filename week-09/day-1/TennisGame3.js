@@ -1,4 +1,4 @@
-var TennisGame3 = function(p1N, p2N) {
+let TennisGame3 = function(p1N, p2N) {
     this.p2 = 0;
     this.p1 = 0;
 
@@ -7,9 +7,9 @@ var TennisGame3 = function(p1N, p2N) {
 };
 
 TennisGame3.prototype.getScore = function() {
-    var s;
+    let s;
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
-        var p = ["Love", "Fifteen", "Thirty", "Forty"];
+        let p = ["Love", "Fifteen", "Thirty", "Forty"];
         s = p[this.p1];
         return (this.p1 == this.p2) ? s + "-All" : s + "-" + p[this.p2];
     } else {
@@ -21,11 +21,12 @@ TennisGame3.prototype.getScore = function() {
 };
 
 TennisGame3.prototype.wonPoint = function(playerName) {
-    if (playerName == "player1")
-        this.p1 += 1;
-    else
-        this.p2 += 1;
-
+    if (playerName == "player1") {
+      this.p1 += 1;
+    }
+    else {
+      this.p2 += 1;
+    }
 };
 
 if (typeof window === "undefined") {
