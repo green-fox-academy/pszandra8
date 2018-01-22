@@ -45,21 +45,19 @@ TennisGame1.prototype.getScore = function() {
             score += "-";
             tempScore = this.scoreOfPlayer2;
             }
-          switch (tempScore) {
-            case 0:
-              score += "Love";
-                break;
-            case 1:
-              score += "Fifteen";
-                break;
-            case 2:
-              score += "Thirty";
-                break;
-            case 3:
-              score += "Forty";
-                break;
+          if (tempScore === 0) {
+            score += "Love"; 
+          }
+          else if (tempScore === 1) {
+            score += "Fifteen";
+          }
+          else if (tempScore === 2) {
+            score += "Thirty";
+          }
+          else if (tempScore === 3) {
+            score += "Forty";
+          }
             }
-        }
     }
     return score;
 };
