@@ -1,9 +1,9 @@
 let TennisGame3 = function(nameOfPlayer1, nameOfPlayer2) {
-    this.scoreOfPlayer1 = 0;
-    this.scoreOfPlayer2 = 0;
+  this.scoreOfPlayer1 = 0;
+  this.scoreOfPlayer2 = 0;
 
-    this.nameOfPlayer1 = nameOfPlayer1;
-    this.nameOfPlayer2 = nameOfPlayer2;
+  this.nameOfPlayer1 = nameOfPlayer1;
+  this.nameOfPlayer2 = nameOfPlayer2;
 };
 
 TennisGame3.prototype.getScore = function() {
@@ -22,14 +22,14 @@ TennisGame3.prototype.getScore = function() {
 };
 
 TennisGame3.prototype.wonPoint = function(playerName) {
-    if (playerName === "player1") {
-      this.scoreOfPlayer1 += 1;
-    }
-    else {
-      this.scoreOfPlayer2 += 1;
-    }
+  if (playerName === "player1") {
+    this.scoreOfPlayer1 += 1;
+  }
+  else {
+    this.scoreOfPlayer2 += 1;
+  }
 };
 
 if (typeof window === "undefined") {
-    module.exports = TennisGame3;
+  module.exports = TennisGame3;
 }
