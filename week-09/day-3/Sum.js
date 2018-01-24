@@ -1,11 +1,16 @@
 'use strict';
 
-function arraySum(array){
-  let total = 0;
-  for (var i = 0; i < array.length; i++) {
-    total += array[i];
+let listSum = function(list) {
+    let total = 0;
+    list.forEach(function (element) {
+      if (typeof element !== 'number') {
+        throw new Error('not a number');
+      }
+      else {
+        total += element;
+      }
+    });
+    return total;
   }
-  return total;
-};
 
-module.exports = arraySum;
+module.exports = listSum;
