@@ -43,7 +43,16 @@ const median = function(pool){
 
 // Returns true if the param is a vovel
 const isVovel = function(char){
-  return 'aeiouéáőűöüóí'.indexOf(char);
+  if (char === '') {
+    throw new Error('Please, give me one character');
+  }
+  else {
+    if ('aeiouéáőűöüóí'.indexOf(char) !== -1) {
+      return true;
+    } else{
+      return false;
+    }
+  }
 }
 
 // Create a method that translates hungarian into the teve language

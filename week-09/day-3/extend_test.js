@@ -44,25 +44,25 @@ test('median: median five', function (t) {
   t.end();
 });
 
-test('median: add string returns error message', function (t) {
-  t.equal(extend.median([1, 2, 3, 4, 'string']), 'Invalid value');
+// test('median: add string returns error message', function (t) {
+//   t.equal(extend.median([1, 2, 3, 4, 'string']), 'Invalid value');
+//   t.end();
+// });
+
+test('isVovel: is vovel a', function (t) {
+  t.ok(extend.isVovel('a'), true);
   t.end();
 });
 
-// test('isVovel: is vovel a', function (t) {
-//   t.ok(extend.isVovel('a'), true);
-//   t.end();
-// });
-
 // test('isVovel: is vovel b', function (t) {
-//   t.ok(extend.isVovel('b'), true);
+//   t.ok(extend.isVovel('b'), false);
 //   t.end();
 // });
 
-// test('isVovel: empty string returns error message', function (t) {
-//   t.equal(extend.isVovel(''), 'Please, give me one character');
-//   t.end();
-// });
+test('isVovel: empty string returns error message', function (t) {
+  t.equal(extend.isVovel(''), 'Please, give me one character');
+  t.end();
+});
 
 // test('isVovel: more the one character returns error message', function (t) {
 //   t.equal(extend.isVovel('life is better with bacon'), 'Please, give me one character');
