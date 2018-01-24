@@ -25,7 +25,7 @@ const maxOfThree = function(a, b, c) {
 const median = function(pool){
   for (let i = 0; i < pool.length; i++) {
     if (typeof pool[i] !== 'number') {
-      throw new Error('Invalid value');
+      return 'Invalid value';
     }
     else {
       if (pool.length < 1) {
@@ -44,7 +44,7 @@ const median = function(pool){
 // Returns true if the param is a vovel
 const isVovel = function(char){
   if (char === '') {
-    throw new Error('Please, give me one character');
+    return 'Please, give me one character';
   }
   else {
     if ('aeiouéáőűöüóí'.indexOf(char) !== -1) {
