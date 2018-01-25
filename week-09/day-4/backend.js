@@ -1,18 +1,15 @@
 'use strict';
 
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use('/assets', express.static('assets'));
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(3000, function() {
+app.listen(8080, function() {
   console.log('app is running');
 })
-
-app.use(express.static('public'));
