@@ -70,40 +70,50 @@ app.get('/appenda/:appendable', function (req, res) {
   }
 });
 
-app.post('/dountil/:whattodo', function (req, res) {
-  const what = req.params.whattodo;
-  const number = req.query.until;
-  const number2 = req.query.until;
-  if (req.query.input === undefined) {
+app.post('/dountil/:action', function (req, res) {
+  const action = req.params.action;
+  const number = req.body.until;
+  if (number === undefined) {
     res.json({
       error: 'Please provide a number!'
     }
     )
   } else {
-    if (what === 'sum') {
+    if (action === 'sum') {
       res.json(
         {
           until: number,
-          result: function sum(number) {
-            return number + sum(number - 1);
-        }
+          result: sum(number)
         }
       );
-      } else if (what === 'factor') {
-        res.json( {
-          until: number2,
-          result: function factorio(number2) {
-            if (number2 === 0) {
-                return 1;
-            } else {
-                return number2 * factorio(number2 - 1);
-            }
-        }
-        }
+      } else if (action === 'factor') {
+        res.json(
+          {
+            until: number,
+            result: factorio(number)
+          }
         );
-        }
+      }
   }
 });
+
+let sum = function (number) {
+  if (number > 0) {
+      return number + sum(number - 1);
+  } else if (number === 0) {
+      return 0;
+  } else {
+      return 1;
+  }
+}
+
+let factorio = function (number) {
+  if (number === 0) {
+      return 1;
+  } else {
+      return number * factorio(number - 1);
+  }
+}
 
 app.listen(8080, function () {
   console.log('app is running');
