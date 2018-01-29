@@ -24,9 +24,14 @@ html, body {
   padding: 2.5%;
   width: 25%;
   height: 33%;
-  color: green;
   background-image: url('fox.jpg');
   background-repeat: no-repeat;
+  border: none;
+}
+
+p {
+  color: green;
+  font-size: 20px;
 }
 
 .currently_playing {
@@ -41,7 +46,7 @@ html, body {
   margin: 1%;
   margin-right: 0;
   display: grid;
-  width: 48%;
+  width: 49%;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
@@ -141,4 +146,8 @@ section > button {
 
 audio {
   width: 60%;
+}
+
+.selected_item {
+  background-color: aqua;
 }
