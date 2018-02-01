@@ -9,7 +9,6 @@ window.addEventListener('load', () => {
     httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === 4 && httpRequest.status === 200) {
       let response = JSON.parse(httpRequest.responseText);
-      console.log(response)
       response.forEach(element => tableCreator(element));}
     }})
 
@@ -20,7 +19,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
     let item_name = event.target.elements.namedItem('itemSelector').value;
     let size = event.target.elements.namedItem('sizeSelector').value;
     let quantity = event.target.elements.namedItem('quantity').value;
-    httpRequest.open('GET', `http://localhost:8080/warehouse/?item=${item_name}&size=${size}&quantity=${quantity}`);
+    httpRequest.open('GET', `http://localhost:8080/warehouse/price-check/?item=${item_name}&size=${size}&quantity=${quantity}`);
     httpRequest.setRequestHeader('Accept', '*');
     httpRequest.setRequestHeader('Content-type', 'application/json');
     httpRequest.send();
@@ -28,28 +27,41 @@ document.querySelector('form').addEventListener('submit', (event) => {
     if (httpRequest.readyState === 4 && httpRequest.status === 200) {
       let response = JSON.parse(httpRequest.responseText);
       console.log(response)
-      response.forEach(element => tableCreator(element));
+      let orderInfo = document.querySelector('h2');
+      console.log(orderInfo);
+      if (response.result === "OK") {
+        if (orderInfo.classList.contains('error')) {
+          orderInfo.classList.remove('error');
+        }
+        orderInfo.classList.add('order');
+        orderInfo.textContent = 'You can order the selected items!';
+      } else {
+        orderInfo.classList.add('error');
+        orderInfo.textContent = 'There was an error';
+      }
     }
     }
   })
 
+let table = document.querySelector('table');
+let head = document.createElement('thead');
+let headRow = document.createElement('tr');
+let body = document.createElement('tbody');
+
+for (let i = 0; i <5; i++) {
+  let headField = document.createElement('th');
+  head.appendChild(headField);
+  let headFieldContent = ['item name', 'manufacturer', 'category', 'size', 'unit price'];
+  headField.textContent = headFieldContent[i];
+}
+
 const tableCreator = function(element) {
-  let table = document.querySelector('table');
-  let head = document.createElement('thead');
-  let headRow = document.createElement('tr');
-  let body = document.createElement('tbody');
   let bodyrow = document.createElement('tr');
   table.appendChild(head);
   table.appendChild(headRow);
   table.appendChild(body);
   table.appendChild(bodyrow);
 
-  for (let i = 0; i <5; i++) {
-    let headField = document.createElement('th');
-    head.appendChild(headField);
-    let headFieldContent = ['item name', 'manufacturer', 'category', 'size', 'unit price'];
-    headField.textContent = headFieldContent[i];
-  }
   let data = document.createElement('td');
   data.textContent = element.item_name;
   bodyrow.appendChild(data);
