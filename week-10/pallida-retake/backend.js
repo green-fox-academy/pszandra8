@@ -38,8 +38,12 @@ app.get('/warehouse', function (req, res) {
   })})
 
 app.get('/warehouse/price-check', function (req, res) {
-  let unit_price = conn.query(`SELECT unit_price FROM warehouse WHERE item_name LIKE '${req.query.item}%' AND size='${req.query.size}'`);
-  let avail = conn.query(`SELECT in_store FROM warehouse WHERE item_name LIKE '${req.query.item}%' AND size='${req.query.size}'`);
+  let unit_price = conn.query(`SELECT unit_price FROM warehouse
+                                WHERE item_name='${req.query.item}'
+                                AND size='${req.query.size}'`);
+                                let avail = conn.query(`SELECT in_store FROM warehouse
+                                WHERE item_name='${req.query.item}'
+                                AND size='${req.query.size}'`);
   let price = req.query.quantity * unit_price;
   console.log(unit_price);
   if(req.query.quantity >= 3) {

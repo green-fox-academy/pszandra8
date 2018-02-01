@@ -28,7 +28,6 @@ document.querySelector('form').addEventListener('submit', (event) => {
       let response = JSON.parse(httpRequest.responseText);
       console.log(response)
       let orderInfo = document.querySelector('h2');
-      console.log(orderInfo);
       if (response.result === "OK") {
         if (orderInfo.classList.contains('error')) {
           orderInfo.classList.remove('error');
