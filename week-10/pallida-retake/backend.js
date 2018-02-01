@@ -33,9 +33,28 @@ app.use(function (req, res, next) {
 });
 
 app.get('/warehouse', function (req, res) {
-    conn.query(`SELECT * FROM warehouse`, function (err, rows) {
-      res.json(rows);
-  })
+  conn.query(`SELECT * FROM warehouse`, function (err, rows) {
+    res.json(rows);
+  })})
+
+app.get('/warehouse/price-check', function (req, res) {
+  let unit_price = conn.query(`SELECT unit_price FROM warehouse WHERE item_name LIKE '${req.query.item}%' AND size LIKE '${req.query.size}%'`);
+  let avail = conn.query(`SELECT in_store FROM warehouse WHERE item_name LIKE '${req.query.item}%' AND size LIKE '${req.query.size}%'`);
+  let price = req.query.quantity * unit_price;
+  if(req.query.quantity >= 3) {
+    res.json({
+      result: 'OK',
+      total_price: `${price}`
+    })
+  } else if (req.query.quantity < 3) {
+    res.json({
+      result: 'please order at least 3, one for yourself, two for your friends'
+    })
+  } else if (req.query.quantity > avail) {
+    res.json({
+      result: "error, we don't have enough items in store"
+    })
+  }
 })
 
 app.listen(8080, () => {

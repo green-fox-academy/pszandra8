@@ -6,22 +6,29 @@
   <link rel="stylesheet" type="text/css" media="screen" href="store.css" />
 </head>
 <body>
-  <main>
+  <form>
     <h1>Green Fox Fashion Web Store</h1>
-    <select class="itemSelector">
+    <select class="itemSelector" name='itemSelector'>
         <option value="" disabled selected>Select item name</option>
-        <option value="Ilyen">Ilyen</option>
-        <option value="Olyan">Olyan</option>
+        <option>Green Fox Jumper</option>
+        <option>Half-Ip Ribbed Mock-Turtleneck Sweater</option>
+        <option>Green Fox Short-Sleeved Mesh Polo Shirt</option>
+        <option>Wool/Alpaca Shawl Collar Cardigan</option>
+        <option>Two-Tone Sleeveless Sheath Dress</option>
+        <option>Stretch Steamed Pencil Skirt</option>
     </select>
-    <select class="sizeSelector">
+    <select class="sizeSelector" name='sizeSelector'>
         <option value="" disabled selected>Select size</option>
-        <option value="Ilyen">Ilyen</option>
-        <option value="Olyan">Olyan</option>
+        <option>s</option>
+        <option>m</option>
+        <option>l</option>
+        <option>xl</option>
+        <option>xxl</option>
     </select>
     <input type="text" name="quantity" placeholder="add quantity">
     <button>GET TOTAL</button>
     <table></table>
-  </main>
+  </form>
   <script type="text/javascript" src="./store.js"></script>
 </body>
 </html>
