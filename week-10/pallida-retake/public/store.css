@@ -1,0 +1,23 @@
+button {
+  display: inline-block;
+}
+
+label {
+  position: relative;
+  top: 7px;
+  width: 80px;
+  height: 20px;
+  border: solid lightgrey 1px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 5px;
+  border: 1px solid black;
+}
