@@ -125,6 +125,7 @@ const peopleToPlanet = function(event) {
   httpRequest.setRequestHeader('Content-type', 'application/json');
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      mainPaigeRenderer('GET', '/planets');
       }
   }
   httpRequest.send();
@@ -138,6 +139,7 @@ const peopleToShip = function(event) {
   httpRequest.setRequestHeader('Content-type', 'application/json');
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      mainPaigeRenderer('GET', '/planets');
       }
   }
   httpRequest.send();
