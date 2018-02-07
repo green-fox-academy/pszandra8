@@ -11,15 +11,14 @@ const mainPaigeRenderer = function(method, query) {
   httpRequest.open(method, `http://localhost:8080${query}`);
   httpRequest.setRequestHeader('Accept', '*');
   httpRequest.setRequestHeader('Content-type', 'application/json');
-  httpRequest.send();
   httpRequest.onreadystatechange = function() {
-  if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-    let response = JSON.parse(httpRequest.responseText);
-    console.log(response);
-    createThead();
-    response.forEach(element => createTBody(element));
-    }
+    if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      let response = JSON.parse(httpRequest.responseText);
+      createThead();
+      response.forEach(element => createTBody(element));
+      }
   }
+  httpRequest.send();
 }
 
 //table select
@@ -41,7 +40,7 @@ function createThead(){
   table.appendChild(tbody);
 }
 
-//body cotent
+//body content
 const createTBody = function(element) {
   const tbody = document.querySelector('tbody');
   const trow = document.createElement('tr');
@@ -64,17 +63,18 @@ const createTBody = function(element) {
     spaceshipLocation.removeAttribute('id', element.id);
     spaceshipLocation.classList.add('toPlanetToShip');
     trow.appendChild(spaceshipLocation);
-    spaceshipLocation.addEventListener('click', moveHere);
 
     //creating link
-    const toPlanet = document.createElement('a');
+    const toPlanet = document.createElement('button');
     toPlanet.innerHTML = '&#8592; to planet'
+    toPlanet.setAttribute('id', element.id);
     spaceshipLocation.appendChild(toPlanet);
     toPlanet.addEventListener('click', peopleToPlanet);
 
     //creating link
-    const toShip = document.createElement('a');
+    const toShip = document.createElement('button');
     toShip.innerHTML = ' to ship&#8594;'
+    toShip.setAttribute('id', element.id);
     spaceshipLocation.appendChild(toShip);
     toShip.addEventListener('click', peopleToShip);
 
@@ -103,34 +103,42 @@ const createTBody = function(element) {
 //planets endpoint
 const planets = mainPaigeRenderer('GET', '/planets');
 
-function posting(query){
+//movehere endpoint
+const moveHere = function(event) {
   let httpRequest = new XMLHttpRequest();
-
-  httpRequest.open('POST', `http://localhost:8080${query}`);
-  httpRequest.setRequestHeader('Accept', 'application/json');
+  httpRequest.open('POST', `http://localhost:8080/movehere/${event.target.id}`);
+  httpRequest.setRequestHeader('Accept', '*');
   httpRequest.setRequestHeader('Content-type', 'application/json');
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
-      console.log('HTTP REQUEST SUCCESSFUL');
+      mainPaigeRenderer('GET', '/planets');
     }
-    else {
-      console.log('could not complete the request');
-    }
-    };
+  }
   httpRequest.send();
-}
-
-//movehere endpoint
-const moveHere = function(event) {
-  posting(`/movehere/${event.target.id}`);
 }
 
 //toplanet endpoint
 const peopleToPlanet = function(event) {
-  posting(`/toplanet/${event.target.id}`);
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.open('POST', `http://localhost:8080/toplanet/${event.target.id}`);
+  httpRequest.setRequestHeader('Accept', '*');
+  httpRequest.setRequestHeader('Content-type', 'application/json');
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      }
+  }
+  httpRequest.send();
 }
 
 //toship endpoint
 const peopleToShip = function(event) {
-  posting(`/toship/${event.target.id}`);
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.open('POST', `http://localhost:8080/toship/${event.target.id}`);
+  httpRequest.setRequestHeader('Accept', '*');
+  httpRequest.setRequestHeader('Content-type', 'application/json');
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      }
+  }
+  httpRequest.send();
 }

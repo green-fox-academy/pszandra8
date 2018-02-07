@@ -3,15 +3,13 @@
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const app = express();
+app.use(cors())
 app.use(bodyParser.json());
 
 app.use('/', express.static('./public'));
-
-app.get('/', function (req, res) {
-  res.sendFile(__dirname, '/public/index.html');
-});
 
 const conn = mysql.createConnection({
   host: 'localhost',
@@ -27,14 +25,11 @@ conn.connect((err) => {
   }
 });
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next()
+app.get('/', cors(), function (req, res) {
+  res.sendFile(__dirname, '/public/index.html');
 });
 
-app.get('/planets', function (req, res) {
+app.get('/planets', cors(), function (req, res) {
   conn.query(`SELECT * FROM spaceship, planet`, function (err, rows) {
     if (err) {
       throw err;
@@ -44,19 +39,21 @@ app.get('/planets', function (req, res) {
   })
 })
 
-app.post('/movehere/:planet_id', function (req, res) {
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+app.post('/movehere/:planet_id', cors(), function (req, res) {
   conn.query(`UPDATE spaceship SET planet = (SELECT name FROM planet WHERE id=${req.params.planet_id});`, function (err, rows) {
-    if (err) {
-      throw err;
-    } else {
-      res.json({
-        result: "success"
-      })
-    }
+    res.json(rows)
   })
 })
 
-app.post('/toplanet/:planet_id', function (req, res) {
+app.post('/toplanet/:planet_id', cors(), function (req, res) {
+  console.log(req.params.planet_id);
   conn.query(`SELECT utilization FROM spaceship`, function (err, spaceshipRows) {
     if (err) {
       throw err;
@@ -64,42 +61,41 @@ app.post('/toplanet/:planet_id', function (req, res) {
       res.json({
         result: "success"
       })
-    }
-  })
-
-  conn.query(`SELECT population FROM planet WHERE id=${req.params.planet_id}`, function (err, planetRows) {
-    if (err) {
-      throw err;
-    } else {
-      res.json({
-        result: "success"
+      conn.query(`SELECT population FROM planet WHERE id=${req.params.planet_id}`, function (err, planetRows) {
+        if (err) {
+          throw err;
+        } else {
+          res.json({
+            result: "success"
+          })
+          if (spaceshipRows[0].utilization > 0) {
+            conn.query(`UPDATE spaceship SET utilization = 0;`, function (err, rows) {
+              if (err) {
+                throw err;
+              } else {
+                res.json({
+                  result: "success"
+                })
+              }
+            })
+            let newPopulation = spaceshipRows[0].utilization + planetRows[0].population;
+            conn.query(`UPDATE planet SET population = ${newPopulation} WHERE id=${req.params.planet_id};`, function (err, rows) {
+              if (err) {
+                throw err;
+              } else {
+                res.json({
+                  result: "success"
+                })
+              }
+            })
+          }
+        }
       })
     }
   })
-
-  if (spaceshipRows[0].utilization > 0) {
-    conn.query(`UPDATE spaceship SET utilization = 0;`, function (err, rows) {
-      if (err) {
-        throw err;
-      } else {
-        res.json({
-          result: "success"
-        })
-      }
-    })
-    conn.query(`UPDATE planet SET population = ${spaceshipRows[0].utilization} + ${planetRows[0].population};`, function (err, rows) {
-      if (err) {
-        throw err;
-      } else {
-        res.json({
-          result: "success"
-        })
-      }
-    })
-  }
 })
 
-app.post('/toship/:planet_id', function (req, res) {
+app.post('/toship/:planet_id', cors(), function (req, res) {
   conn.query(`SELECT utilization FROM spaceship`, function (err, spaceshipRows) {
     if (err) {
       throw err;
@@ -107,40 +103,39 @@ app.post('/toship/:planet_id', function (req, res) {
       res.json({
         result: "success"
       })
-    }
-  })
-
-  conn.query(`SELECT population FROM planet WHERE id=${req.params.planet_id}`, function (err, planetRows) {
-    if (err) {
-      throw err;
-    } else {
-      res.json({
-        result: "success"
+      conn.query(`SELECT population FROM planet WHERE id=${req.params.planet_id}`, function (err, planetRows) {
+        if (err) {
+          throw err;
+        } else {
+          res.json({
+            result: "success"
+          })
+            if (spaceshipRows[0].utilization !== 0) {
+            let freeSpacesOnShip = 60 - spaceshipRows[0].utilization;
+            conn.query(`UPDATE spaceship SET utilization = 60;`, function (err, rows) {
+              if (err) {
+                throw err;
+              } else {
+                res.json({
+                  result: "success"
+                })
+              }
+            })
+            let newPopulation = planetRows[0].population - freeSpacesOnShip;
+            conn.query(`UPDATE planet SET population = ${newPopulation} WHERE id=${req.params.planet_id};`, function (err, rows) {
+              if (err) {
+                throw err;
+              } else {
+                res.json({
+                  result: "success"
+                })
+              }
+            })
+          }
+        }
       })
     }
   })
-
-  if (spaceshipRows[0].utilization !== 0) {
-    let freeSpacesOnShip = 60 - spaceshipRows[0].utilization;
-    conn.query(`UPDATE spaceship SET utilization = 60;`, function (err, rows) {
-      if (err) {
-        throw err;
-      } else {
-        res.json({
-          result: "success"
-        })
-      }
-    })
-    conn.query(`UPDATE planet SET population = ${planetRows[0].population} - ${freeSpacesOnShip};`, function (err, rows) {
-      if (err) {
-        throw err;
-      } else {
-        res.json({
-          result: "success"
-        })
-      }
-    })
-  }
 })
 
 app.listen(8080, () => {
