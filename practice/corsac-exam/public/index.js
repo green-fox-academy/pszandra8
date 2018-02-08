@@ -1,6 +1,6 @@
 'use strict';
 
-//if window loads
+//if window loads render the paige
 window.addEventListener('load', () => {
   mainPaigeRenderer('GET', '/');
 })
@@ -20,7 +20,6 @@ const mainPaigeRenderer = function(method, query) {
   }
   httpRequest.send();
 }
-
 //table select
 let table = document.querySelector('table');
 
