@@ -120,8 +120,9 @@ app.post('/toship/:planet_id', cors(), function (req, res) {
             passangerCount = freeSpacesOnShip;
           }
           let newPopulation = planetRows[0].population - passangerCount;
+          let newUtilization = spaceshipRows[0].utilization + passangerCount;
            //update number of people on ship
-          conn.query(`UPDATE spaceship SET utilization = ${passangerCount};`, function (err, rows) {
+          conn.query(`UPDATE spaceship SET utilization = ${newUtilization};`, function (err, rows) {
              //update number of people on ship
             conn.query(`UPDATE planet SET population = ${newPopulation} WHERE id=${req.params.planet_id};`, function (err, rows) {
               //error handling
