@@ -9,8 +9,6 @@ window.addEventListener('load', () => {
 const mainPaigeRenderer = function(method, query) {
   let httpRequest = new XMLHttpRequest();
   httpRequest.open(method, `http://localhost:8080${query}`);
-  httpRequest.setRequestHeader('Accept', '*');
-  httpRequest.setRequestHeader('Content-type', 'application/json');
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
       let response = JSON.parse(httpRequest.responseText);

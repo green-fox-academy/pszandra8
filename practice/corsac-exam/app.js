@@ -11,6 +11,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
+//imports all files in public folder, first looks for the html one
 app.use('/', express.static('./public'));
 
 //SQL database
@@ -28,20 +29,6 @@ conn.connect((err) => {
     console.log('Connected to mySQL!');
   }
 });
-
-// //Frontend endpoint
-// app.get('/', cors(), function (req, res) {
-//   res.sendFile(__dirname, '/public/index.html');
-// });
-
-//headers
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
 
 //API endpoints
 //planets endpoint
