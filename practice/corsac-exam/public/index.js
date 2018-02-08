@@ -2,7 +2,7 @@
 
 //if window loads render the paige
 window.addEventListener('load', () => {
-  mainPaigeRenderer('GET', '/');
+  mainPaigeRenderer('GET', '/planets');
 })
 
 //main page renderer

@@ -29,10 +29,10 @@ conn.connect((err) => {
   }
 });
 
-//Frontend endpoint
-app.get('/', cors(), function (req, res) {
-  res.sendFile(__dirname, '/public/index.html');
-});
+// //Frontend endpoint
+// app.get('/', cors(), function (req, res) {
+//   res.sendFile(__dirname, '/public/index.html');
+// });
 
 //headers
 app.use(function (req, res, next) {
