@@ -1,0 +1,19 @@
+h1 {
+  color: grey;
+  padding-left: 40px;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  padding-left: 40px;
+  display: inline;
+  font-weight: bold;
+}
+
+.highPrio {
+  color: red;
+  font-weight: bold;
+}
