@@ -48,6 +48,27 @@ app.get('/todos', function (req, res) {
   })
 })
 
+app.post('/posting', function (req, res) {
+  conn.query(`INSERT INTO todos SET ?`, [req.body], function (err, packet) {
+    if (err) {
+      throw err;
+    } else {
+      console.log('Successful insert')
+    }
+  })
+})
+
+app.delete('/delete/:id', function (req, res) {
+  conn.query(`DELETE FROM todos WHERE id=${req.params.id};`, function (err, packet) {
+    if (err) {
+      throw err;
+    } else {
+      console.log('Successfull delete');
+      res.sendStatus(200);
+    }
+  }) 
+})
+
 //Run App
 app.listen(port, () => {
   console.log(`the app is running on ${port}`);
