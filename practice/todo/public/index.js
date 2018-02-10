@@ -41,11 +41,16 @@ const createList = function(element) {
   deleteButton.setAttribute('id', element.id);
   listElement.appendChild(deleteButton);
   deleteButton.addEventListener('click', deleteListElement);
+
+  const statusButton = document.createElement('button');
+  statusButton.textContent = 'Change status';
+  statusButton.setAttribute('id', element.id);
+  listElement.appendChild(statusButton);
+  statusButton.addEventListener('click', changeStatus);
 }
 
 
 const deleteListElement = function (event) {
-  console.log(event.target.id);
   let httpRequest = new XMLHttpRequest();
   httpRequest.open('DELETE', `http://localhost:8080/delete/${event.target.id}`);
   httpRequest.setRequestHeader('Accept', '*');
@@ -53,6 +58,20 @@ const deleteListElement = function (event) {
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
       console.log('successfull delete');
+      mainPaigeRenderer('GET', '/todos');
+  }
+  }
+  httpRequest.send();
+}
+
+const changeStatus = function (event) {
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.open('POST', `http://localhost:8080/change/${event.target.id}`);
+  httpRequest.setRequestHeader('Accept', '*');
+  httpRequest.setRequestHeader('Content-type', 'application/json');
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === httpRequest.DONE && httpRequest.status === 200) {
+      console.log('successfull change of status');
       mainPaigeRenderer('GET', '/todos');
   }
   }

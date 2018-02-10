@@ -69,6 +69,30 @@ app.delete('/delete/:id', function (req, res) {
   }) 
 })
 
+app.post('/change/:id', function (req, res) {
+  conn.query(`SELECT status FROM todos WHERE id=?;`, [req.params.id], function (err, rows) {
+    if (rows[0].status === 'done') {
+      conn.query(`UPDATE todos SET status='not done' WHERE id=${req.params.id};`, function (err, packet) {
+        if (err) {
+          throw err;
+        } else {
+          console.log('Successfull delete');
+          res.sendStatus(200);
+        }
+      })
+    } else {
+      conn.query(`UPDATE todos SET status='done' WHERE id=${req.params.id};`, function (err, packet) {
+        if (err) {
+          throw err;
+        } else {
+          console.log('Successfull delete');
+          res.sendStatus(200);
+        }
+      })
+    }
+  }) 
+})
+
 //Run App
 app.listen(port, () => {
   console.log(`the app is running on ${port}`);
