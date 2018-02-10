@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-//imports all files in public folder, first looks for the html one
+//imports all files from public folder, first looks for the html one
 app.use('/', express.static('./public'));
 
 //SQL database
@@ -38,6 +38,8 @@ conn.connect((err) => {
   }
 });
 
+
+//backend endpoints
 app.get('/todos', function (req, res) {
   conn.query('SELECT * FROM todos', function (err, rows) {
     if (err) {
@@ -63,29 +65,27 @@ app.delete('/delete/:id', function (req, res) {
     if (err) {
       throw err;
     } else {
-      console.log('Successfull delete');
       res.sendStatus(200);
     }
   }) 
 })
 
 app.post('/change/:id', function (req, res) {
-  conn.query(`SELECT status FROM todos WHERE id=?;`, [req.params.id], function (err, rows) {
+  const id = req.params.id;
+  conn.query(`SELECT status FROM todos WHERE id=?;`, [id], function (err, rows) {
     if (rows[0].status === 'done') {
-      conn.query(`UPDATE todos SET status='not done' WHERE id=${req.params.id};`, function (err, packet) {
+      conn.query(`UPDATE todos SET status='not done' WHERE id=${id};`, function (err, packet) {
         if (err) {
           throw err;
         } else {
-          console.log('Successfull delete');
           res.sendStatus(200);
         }
       })
     } else {
-      conn.query(`UPDATE todos SET status='done' WHERE id=${req.params.id};`, function (err, packet) {
+      conn.query(`UPDATE todos SET status='done' WHERE id=${id};`, function (err, packet) {
         if (err) {
           throw err;
         } else {
-          console.log('Successfull delete');
           res.sendStatus(200);
         }
       })
