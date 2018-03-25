@@ -23,7 +23,6 @@ https://github.com/greenfox-academy/pszandra8/blob/master/week-09/day-3/Anagram_
 
 * Using callbacks 
 
-https://github.com/greenfox-academy/pszandra8/blob/master/week-08/day-2/multiple-timeout.js
 https://github.com/greenfox-academy/pszandra8/blob/master/week-08/day-2/call.js
 
 * Creating an Express endpoint in Node.js
