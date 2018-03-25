@@ -12,4 +12,4 @@ const printing = function (factorial) {
   console.log(factorial);
 }
 
-console.log(factorialTillLimitWithCallback(20, printing));
+factorialTillLimitWithCallback(20, printing);
