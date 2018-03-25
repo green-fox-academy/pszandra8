@@ -1,3 +1,6 @@
+// Create a function and pass it as a parameter to the factorialTillLimitWithCallback
+// function, and print all the factorial numbers till 20.
+
 'use strict';
 
 function factorialTillLimitWithCallback(limit, callback) {
@@ -8,8 +11,8 @@ function factorialTillLimitWithCallback(limit, callback) {
   }
 }
 
-const printing = function (factorial) {
-  console.log(factorial);
+const getFactorial = function (number) {
+  console.log(number);
 }
 
-factorialTillLimitWithCallback(20, printing);
+factorialTillLimitWithCallback(20, getFactorial);
