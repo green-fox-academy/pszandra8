@@ -32,3 +32,8 @@ https://github.com/greenfox-academy/pszandra8/blob/master/practice/public/bookst
 * Creating a database call in Node.js
 
 https://github.com/greenfox-academy/pszandra8/blob/master/practice/backend.js
+
+
+https://github.com/greenfox-academy/huli-marvin-frontend/blob/staging/src/app/components/utils/auth-guard/auth-guard.component.ts
+https://github.com/greenfox-academy/huli-marvin-frontend/blob/staging/src/app/services/authentication/authentication.service.ts
+https://github.com/greenfox-academy/huli-marvin-frontend/blob/staging/src/app/services/user/user.service.ts
