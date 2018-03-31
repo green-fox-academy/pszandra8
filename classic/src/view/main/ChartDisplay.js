@@ -2,6 +2,7 @@ Ext.require('Ext.chart.*');
 
 Ext.define('Test.view.main.ChartDisplay', {
     extend: 'Ext.Panel',
+    alias: 'chartDisplay',
 
     title: 'Chart',
 
@@ -11,9 +12,17 @@ Ext.define('Test.view.main.ChartDisplay', {
         'Test.store.ChartData' 
     ],
 
-    items: [{
-        xtype: 'chart'
-    }],
+    tbar: [
+        '->',
+        {
+            text: 'Load',
+            handler: 'onLoad'
+        },
+        {
+            text: 'Preview',
+            handler: 'onPreview'
+        }
+    ],
 
     // chart: Ext.create('Ext.chart.Chart', {
     //     renderTo: Ext.getBody(),

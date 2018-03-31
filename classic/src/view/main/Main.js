@@ -99,8 +99,8 @@ Ext.define('Test.view.main.Main', {
         title: 'Chart',
         iconCls: 'fa-area-chart',
         items: [{
-            xtype: 'chartDisplay',
-        }],
+            xtype: 'chartDisplay'
+        }]
     }, {
         title: 'Settings',
         iconCls: 'fa-cog',

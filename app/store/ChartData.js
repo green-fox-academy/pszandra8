@@ -1,13 +1,15 @@
 Ext.require('Ext.chart.*');
 
 Ext.define('Test.store.ChartData', {
-    extend: 'Ext.chart.Chart',
-    alias: 'widget.Chart',
-    chartCreate: Ext.create('Ext.chart.Chart', {
-        renderTo: Ext.getBody(),
-        width: 500,
-        height: 300,
-        model: 'Test.model.Chart',
+    extend: 'Ext.panel.Panel',
+    alias: 'store.chart',
+//     chartCreate: Ext.create('Ext.chart.CartesianChart', {
+//         renderTo: Ext.getBody(),
+//         reference: 'chart',
+//         width: 500,
+//         height: 300,
+//         margin: 150,
+//         model: 'Test.model.Chart',
         store: {
             data: [
                 {name: "Item-0", g1: 18.34,g2: 0.04},
@@ -28,33 +30,33 @@ Ext.define('Test.store.ChartData', {
             ]
         },
     
-        interactions: {
-            type: 'panzoom'
-        },
+//         interactions: {
+//             type: 'panzoom'
+//         },
     
-        legend: {
-            docked: 'right'
-        },
+//         legend: {
+//             docked: 'right'
+//         },
     
-        axes: [{
-            type: 'numeric',
-            position: 'left',
-            grid: true
-        }, {
-            type: 'category',
-            position: 'bottom',
-            visibleRange: [0, 0.4]
-        }],
+//         axes: [{
+//             type: 'numeric',
+//             position: 'left',
+//             grid: true
+//         }, {
+//             type: 'category',
+//             position: 'bottom',
+//             visibleRange: [0, 0.4]
+//         }],
     
-        series: [{
-            type: 'area',
-            xField: 'name',
-            yField: ['g1', 'g2'],
-            title: ['G1', 'G2'],
-            style: {
-                stroke: '#666666',
-                fillOpacity: 0.8
-            }
-        }]
-})
+//         series: [{
+//             type: 'area',
+//             xField: 'name',
+//             yField: ['g1', 'g2'],
+//             title: ['G1', 'G2'],
+//             style: {
+//                 stroke: '#666666',
+//                 fillOpacity: 0.8
+//             }
+//         }]
+// })
 });
