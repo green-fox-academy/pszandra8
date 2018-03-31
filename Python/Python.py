@@ -1,9 +1,20 @@
 import lxml
 from lxml import etree
 
-with open(r"allstats1_Result_0000_modified.xml", 'r') as xml:
+xml_file_name = "allstats1_Result_0000_modified.xml"
+csv_file_name = "allstats1_Result_0000_modified.csv"
+
+with open(xml_file_name, 'r') as xml:
     text = xml.read()
 tree = lxml.etree.fromstring(text)
+
+head = ['valuationSpecName','baseBenchmarkPairName','statisticName','drilldownName','positionId','positionName',
+'holdingId', 'holdingName', 'securityType', 'customDimensionName', 'horizon', 'resultValue']
+
+head_line = ','.join(head)
+with open(csv_file_name, 'w') as csv:
+     csv.write(head_line + '\n')
+
 row = ['', '', '', '', '', '', '', '', '', '', '', '']
 for item in tree.iter('valuationSpecName', 'baseBenchmarkPairName', 'statisticName', 'drilldownName', 'positionId', 'positionName', 'holdingId', 'holdingName', 'securityType', 'customDimensionName', 'horizon', 'resultValue'):
     if item.tag == 'valuationSpecName':
@@ -35,5 +46,5 @@ for item in tree.iter('valuationSpecName', 'baseBenchmarkPairName', 'statisticNa
       if row[row_item_number] == None or row[row_item_number] == "":
         row[row_item_number] = "NA"
     line = ','.join(row)
-    with open(r"allstats1_Result_0000_modified.csv", 'a') as csv:
+    with open(csv_file_name, 'a') as csv:
      csv.write(line + '\n')
