@@ -1,0 +1,47 @@
+button {
+  display: inline-block;
+}
+
+label {
+  position: relative;
+  top: 7px;
+  width: 80px;
+  height: 20px;
+  border: solid lightgrey 1px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: gray;
+}
+
+tr:nth-child(2n) {
+  background-color: lightgray;
+}
+
+td, th {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+h2 {
+  display: none;
+}
+
+.order {
+  display: block;
+  background-color: green;
+  width: 300px;
+}
+
+.error {
+  display: block;
+  background-color: red;
+  width: 300px;
+}
